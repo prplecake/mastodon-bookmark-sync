@@ -21,9 +21,11 @@ func processBookmarks(data []byte) ([]bookmark, error) {
 	if err := json.Unmarshal(data, &bookmarks); err != nil {
 		return nil, err
 	}
-	var jsonResult bytes.Buffer
-	json.Indent(&jsonResult, data, "", "  ")
-	log.Printf(jsonResult.String())
+	if debug {
+		var jsonResult bytes.Buffer
+		json.Indent(&jsonResult, data, "", "  ")
+		log.Printf(jsonResult.String())
+	}
 
 	return bookmarks, nil
 }
