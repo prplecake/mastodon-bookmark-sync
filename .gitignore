@@ -1,0 +1,8 @@
+# macOS crap
+.DS_Store
+
+# Compiled binary
+mastodon-bookmark-sync
+
+# Config files / secrets
+config.yaml
