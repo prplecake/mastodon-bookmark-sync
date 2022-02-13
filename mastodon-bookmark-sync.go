@@ -34,7 +34,9 @@ func main() {
 
 	conf = readConfig(configFile)
 
-	log.Println(conf)
+	if debug {
+		log.Println(conf)
+	}
 
 	log.Println("mastodon-bookmark-sync starting up...")
 	log.Println("initializing bluemonday")
@@ -72,11 +74,15 @@ func main() {
 			bkmk.Content = html.UnescapeString(p.Sanitize(
 				strings.Replace(bkmk.Content, "</p><p>", "\n\n", -1),
 			))
-			log.Printf("%d:\n%s\n%s\n%s\n\n",
-				i, bkmk.URL,
-				bkmk.Content,
-				bkmk.Account.Acct,
-			)
+			if debug {
+				log.Printf("%d:\n%s\n%s\n%s\n\n",
+					i, bkmk.URL,
+					bkmk.Content,
+					bkmk.Account.Acct,
+				)
+			}
+
+			log.Printf("Saving URL: %s", bkmk.URL)
 
 			var (
 				descriptionTrimmed = false
@@ -106,7 +112,10 @@ func main() {
 			data.Set("tags", string(tags))
 			data.Set("auth_token", conf.Pinboard.APIToken)
 			fullURL := PINBOARD_API_URL + "?" + data.Encode()
-			log.Print(fullURL)
+
+			if debug {
+				log.Print(fullURL)
+			}
 
 			req, err := http.NewRequest("GET", fullURL, nil)
 			if err != nil {
@@ -122,13 +131,14 @@ func main() {
 			defer resp.Body.Close()
 
 			log.Printf("resp.StatusCode: %d", resp.StatusCode)
-			buf := new(strings.Builder)
-			_, err = io.Copy(buf, resp.Body)
-			if err != nil {
-				log.Fatal(err)
+			if debug {
+				buf := new(strings.Builder)
+				_, err = io.Copy(buf, resp.Body)
+				if err != nil {
+					log.Fatal(err)
+				}
+				log.Printf("resp.Body: %s", buf.String())
 			}
-			log.Printf("resp.Body: %s", buf.String())
-
 		}
 	}
 }
