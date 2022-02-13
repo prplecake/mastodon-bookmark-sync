@@ -63,7 +63,7 @@ anywhere on your system. Once gof is configured, you might want to add it to
 your crontab, or your other favorite task scheduler:
 
 ```
-*/30 * * * * cd /path/to/mastodon-bookmark-sync; mastodon-bookmark-sync
+0 */6 * * * cd /path/to/mastodon-bookmark-sync; ./mastodon-bookmark-sync
 ```
 
 [config-blob]:https://github.com/prplecake/mastodon-bookmark-sync/blob/master/config.example.yaml
