@@ -1,7 +1,6 @@
 [![Go](https://github.com/prplecake/mastodon-bookmark-sync/actions/workflows/go.yml/badge.svg)](https://github.com/prplecake/mastodon-bookmark-sync/actions/workflows/go.yml)
 [![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/prplecake/mastodon-bookmark-sync?include_prereleases)](https://github.com/prplecake/mastodon-bookmark-sync/releases/latest)
 
-
 # mastodon-bookmark-sync
 
 mastodon-bookmark-sync is a command-line utility to synchronize Mastodon
@@ -24,9 +23,9 @@ Before you can start using mastodon-bookmark-sync, you'll need to configure
 it. An example configuration can be found [here][config-blob]. You can also
 just copy the example:
 
-```
-$ cp config.example.yaml config.yaml
-$ vim config.yaml # don't forget to edit it!
+```shell
+cp config.example.yaml config.yaml
+vim config.yaml # don't forget to edit it!
 ```
 
 You'll need an access token as well. You can get on from the [Fediverse
@@ -34,35 +33,35 @@ Instance Access Token Generator][fediverse-access-token].
 
 [fediverse-access-token]:https://tools.splat.soy/fediverse-access-token/
 
-And you'll need your [Pinboard API token](https://pinboard.in/settings/password).
-
+And you'll need your
+[Pinboard API token](https://pinboard.in/settings/password).
 
 ## developing
 
 Build the thing:
 
-```
-$ go build
+```shell
+go build
 ```
 
 Then you can use it:
 
-```
-$ ./mastodon-bookmark-sync
+```shell
+./mastodon-bookmark-sync
 ```
 
 You could also specify the configuration file to use via the command
 line:
 
-```
-$ ./mastodon-bookmark-sync -c /path/to/your/config.yaml
+```shell
+./mastodon-bookmark-sync -c /path/to/your/config.yaml
 ```
 
 This would allow you to place the executable (and configuration)
 anywhere on your system. Once gof is configured, you might want to add it to
 your crontab, or your other favorite task scheduler:
 
-```
+```text
 0 */6 * * * cd /path/to/mastodon-bookmark-sync; ./mastodon-bookmark-sync
 ```
 
