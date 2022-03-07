@@ -90,7 +90,7 @@ func main() {
 				extended           string
 				tags               = fmt.Sprintf(
 					"%s %s",
-					"@"+bkmk.Account.Acct,
+					"via:@"+bkmk.Account.Acct,
 					"via:mastodon-bookmark-sync",
 				)
 			)
