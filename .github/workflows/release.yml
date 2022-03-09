@@ -1,6 +1,6 @@
 name: Release Go Binary
 
-on: 
+on:
   release:
     types: [published]
   workflow_dispatch:
