@@ -1,7 +1,7 @@
 pinboard:
   # https://pinboard.in/settings/password
-  apitoken: 
+  apitoken:
 instances:
   # https://tools.splat.soy/fediverse-access-token
-- accesstoken: 
+- accesstoken:
   instanceurl: https://freeradical.zone
