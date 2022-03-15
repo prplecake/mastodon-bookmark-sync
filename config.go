@@ -21,6 +21,7 @@ type config struct {
 
 type instanceConfig struct {
 	AccessToken, InstanceURL string
+	DeleteBookmarks          bool
 }
 
 type pinboardConfig struct {

@@ -5,3 +5,4 @@ instances:
   # https://tools.splat.soy/fediverse-access-token
 - accesstoken:
   instanceurl: https://freeradical.zone
+  deletebookmarks: true
