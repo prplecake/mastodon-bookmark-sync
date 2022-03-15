@@ -24,7 +24,7 @@ func processBookmarks(data []byte) ([]bookmark, error) {
 	if debug {
 		var jsonResult bytes.Buffer
 		json.Indent(&jsonResult, data, "", "  ")
-		log.Printf(jsonResult.String())
+		log.Print(jsonResult.String())
 	}
 
 	return bookmarks, nil
