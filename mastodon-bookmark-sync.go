@@ -70,19 +70,19 @@ func main() {
 			log.Fatal(err)
 		}
 
-		for i, bkmk := range bookmarks {
-			bkmk.Content = html.UnescapeString(p.Sanitize(
-				strings.Replace(bkmk.Content, "</p><p>", "\n\n", -1),
+		for i := len(bookmarks) - 1; i >= 0; i-- {
+			bookmarks[i].Content = html.UnescapeString(p.Sanitize(
+				strings.Replace(bookmarks[i].Content, "</p><p>", "\n\n", -1),
 			))
 			if debug {
 				log.Printf("%d:\n%s\n%s\n%s\n\n",
-					i, bkmk.URL,
-					bkmk.Content,
-					bkmk.Account.Acct,
+					i, bookmarks[i].URL,
+					bookmarks[i].Content,
+					bookmarks[i].Account.Acct,
 				)
 			}
 
-			log.Printf("Saving URL: %s", bkmk.URL)
+			log.Printf("Saving URL: %s", bookmarks[i].URL)
 
 			var (
 				descriptionTrimmed = false
@@ -90,24 +90,24 @@ func main() {
 				extended           string
 				tags               = fmt.Sprintf(
 					"%s %s",
-					"via:@"+bkmk.Account.Acct,
+					"via:@"+bookmarks[i].Account.Acct,
 					"via:mastodon-bookmark-sync",
 				)
 			)
 
-			if len(bkmk.Content) > PINBOARD_DESC_MAX_LENGTH {
-				trimmedDescription = bkmk.Content[PINBOARD_DESC_MAX_LENGTH:]
+			if len(bookmarks[i].Content) > PINBOARD_DESC_MAX_LENGTH {
+				trimmedDescription = bookmarks[i].Content[PINBOARD_DESC_MAX_LENGTH:]
 				descriptionTrimmed = true
 			}
 
 			if descriptionTrimmed {
-				extended = bkmk.Content
-				bkmk.Content = trimmedDescription
+				extended = bookmarks[i].Content
+				bookmarks[i].Content = trimmedDescription
 			}
 
 			data := url.Values{}
-			data.Set("description", bkmk.Content)
-			data.Set("url", bkmk.URL)
+			data.Set("description", bookmarks[i].Content)
+			data.Set("url", bookmarks[i].URL)
 			data.Set("extended", extended)
 			data.Set("tags", string(tags))
 			data.Set("auth_token", conf.Pinboard.APIToken)
