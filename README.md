@@ -65,4 +65,10 @@ your crontab, or your other favorite task scheduler:
 0 */6 * * * cd /path/to/mastodon-bookmark-sync; ./mastodon-bookmark-sync
 ```
 
+or:
+
+```text
+0 */6 * * * /path/to/mastodon-bookmark-sync -c /path/to/config.yaml
+```
+
 [config-blob]:https://github.com/prplecake/mastodon-bookmark-sync/blob/master/config.example.yaml
