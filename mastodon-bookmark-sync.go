@@ -131,6 +131,7 @@ func main() {
 			defer resp.Body.Close()
 
 			log.Printf("resp.StatusCode: %d", resp.StatusCode)
+
 			if debug {
 				buf := new(strings.Builder)
 				_, err = io.Copy(buf, resp.Body)
@@ -139,6 +140,40 @@ func main() {
 				}
 				log.Printf("resp.Body: %s", buf.String())
 			}
+
+			if instance.DeleteBookmarks && resp.StatusCode == 200 && bookmarks[i].Visibility != "private" && bookmarks[i].Visibility != "direct" {
+				// only delete bookmarks if successfully saved by Pinboard and
+				// don't delete bookmarks of private or direct statuses
+				instance.deleteBookmark(bookmarks[i])
+			}
 		}
+	}
+}
+
+func (instance *instanceConfig) deleteBookmark(status bookmark) {
+	apiURL := instance.InstanceURL + "/api/v1/statuses/" + status.ID + "/unbookmark"
+
+	req, err := http.NewRequest("POST", apiURL, nil)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	req.Header.Set("Authorization", "Bearer "+instance.AccessToken)
+
+	c := &http.Client{}
+
+	resp, err := c.Do(req)
+	if err != nil {
+		log.Fatal(err)
+	}
+	defer resp.Body.Close()
+
+	if debug {
+		buf := new(strings.Builder)
+		_, err = io.Copy(buf, resp.Body)
+		if err != nil {
+			log.Fatal(err)
+		}
+		log.Printf("resp.Body: %s", buf.String())
 	}
 }
