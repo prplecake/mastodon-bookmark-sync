@@ -7,9 +7,11 @@ import (
 )
 
 type bookmark struct {
-	URL     string
-	Content string
-	Account account
+	ID         string
+	URL        string
+	Content    string
+	Account    account
+	Visibility string
 }
 
 type account struct {
