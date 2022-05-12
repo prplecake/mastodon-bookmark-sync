@@ -106,11 +106,11 @@ func main() {
 			}
 
 			data := url.Values{}
+			data.Set("auth_token", conf.Pinboard.APIToken)
 			data.Set("description", bookmarks[i].Content)
 			data.Set("url", bookmarks[i].URL)
 			data.Set("extended", extended)
 			data.Set("tags", string(tags))
-			data.Set("auth_token", conf.Pinboard.APIToken)
 			fullURL := PINBOARD_API_URL + "?" + data.Encode()
 
 			if debug {
