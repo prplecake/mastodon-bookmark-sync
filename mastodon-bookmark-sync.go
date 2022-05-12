@@ -109,6 +109,7 @@ func main() {
 			data.Set("auth_token", conf.Pinboard.APIToken)
 			data.Set("description", bookmarks[i].Content)
 			data.Set("url", bookmarks[i].URL)
+			data.Set("shared", "no")
 			data.Set("extended", extended)
 			data.Set("tags", string(tags))
 			fullURL := PINBOARD_API_URL + "?" + data.Encode()
