@@ -20,10 +20,6 @@ var (
 	PINBOARD_API_URL         = "https://api.pinboard.in/v1/posts/add"
 )
 
-type article struct {
-	Title, URL, Summary string
-}
-
 func main() {
 	var (
 		configFile string
