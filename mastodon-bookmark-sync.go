@@ -14,10 +14,10 @@ import (
 )
 
 var (
-	conf                     *config
-	debug                    bool
-	PINBOARD_DESC_MAX_LENGTH = 255
-	PINBOARD_API_URL         = "https://api.pinboard.in/v1/posts/add"
+	conf                  *config
+	debug                 bool
+	PinboardDescMaxLength = 255
+	PinboardApiUrl        = "https://api.pinboard.in/v1/posts/add"
 )
 
 func main() {
@@ -91,8 +91,8 @@ func main() {
 				)
 			)
 
-			if len(bookmarks[i].Content) > PINBOARD_DESC_MAX_LENGTH {
-				trimmedDescription = bookmarks[i].Content[PINBOARD_DESC_MAX_LENGTH:]
+			if len(bookmarks[i].Content) > PinboardDescMaxLength {
+				trimmedDescription = bookmarks[i].Content[PinboardDescMaxLength:]
 				descriptionTrimmed = true
 			}
 
@@ -108,7 +108,7 @@ func main() {
 			data.Set("shared", "no")
 			data.Set("extended", extended)
 			data.Set("tags", string(tags))
-			fullURL := PINBOARD_API_URL + "?" + data.Encode()
+			fullURL := PinboardApiUrl + "?" + data.Encode()
 
 			if debug {
 				log.Print(fullURL)
