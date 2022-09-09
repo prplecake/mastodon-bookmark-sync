@@ -3,14 +3,13 @@ package main
 import (
 	"log"
 	"os"
-	"os/user"
 	"time"
 
 	"gopkg.in/yaml.v2"
 )
 
 var (
-	dir, configFile string
+	configFile string
 )
 
 type config struct {
@@ -29,8 +28,6 @@ type pinboardConfig struct {
 }
 
 func readConfig(fileName string) *config {
-	usr, _ := user.Current()
-	dir = usr.HomeDir
 	log.Println("reading config...")
 	configFile = fileName
 	config := new(config)
