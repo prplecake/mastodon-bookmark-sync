@@ -107,7 +107,7 @@ func main() {
 			data.Set("url", bookmarks[i].URL)
 			data.Set("shared", "no")
 			data.Set("extended", extended)
-			data.Set("tags", string(tags))
+			data.Set("tags", tags)
 			fullURL := PinboardApiUrl + "?" + data.Encode()
 
 			if debug {
