@@ -4,5 +4,5 @@ pinboard:
 instances:
   # https://tools.splat.soy/pleroma-access-token
 - accesstoken:
-  instanceurl: https://freeradical.zone
+  instanceurl: https://compostintraining.club
   deletebookmarks: true
