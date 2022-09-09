@@ -19,7 +19,7 @@ type account struct {
 }
 
 func processBookmarks(data []byte) ([]bookmark, error) {
-	bookmarks := []bookmark{}
+	var bookmarks []bookmark
 	if err := json.Unmarshal(data, &bookmarks); err != nil {
 		return nil, err
 	}
