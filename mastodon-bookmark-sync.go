@@ -55,7 +55,9 @@ func main() {
 		if err != nil {
 			log.Fatal(err)
 		}
-		defer resp.Body.Close()
+		defer func(Body io.ReadCloser) {
+			_ = Body.Close()
+		}(resp.Body)
 
 		body, err := io.ReadAll(resp.Body)
 		if err != nil {
@@ -125,7 +127,9 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
-			defer resp.Body.Close()
+			defer func(Body io.ReadCloser) {
+				_ = Body.Close()
+			}(resp.Body)
 
 			log.Printf("resp.StatusCode: %d", resp.StatusCode)
 
@@ -163,7 +167,9 @@ func (instance *instanceConfig) deleteBookmark(status bookmark) {
 	if err != nil {
 		log.Fatal(err)
 	}
-	defer resp.Body.Close()
+	defer func(Body io.ReadCloser) {
+		_ = Body.Close()
+	}(resp.Body)
 
 	if debug {
 		buf := new(strings.Builder)
