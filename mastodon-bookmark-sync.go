@@ -48,6 +48,7 @@ func main() {
 			log.Fatal(err)
 		}
 		req.Header.Set("Authorization", "Bearer "+instance.AccessToken)
+		req.Header.Set("User-Agent", conf.HttpConfig.UserAgent)
 
 		c := &http.Client{}
 
@@ -120,6 +121,7 @@ func main() {
 			if err != nil {
 				log.Fatal(err)
 			}
+			req.Header.Set("User-Agent", conf.HttpConfig.UserAgent)
 
 			c := &http.Client{}
 

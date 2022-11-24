@@ -8,6 +8,10 @@ import (
 	"gopkg.in/yaml.v2"
 )
 
+const (
+	HttpUserAgent = "mastodon-bookmark-sync/1.0"
+)
+
 var (
 	configFile string
 )
@@ -16,6 +20,7 @@ type config struct {
 	Instances  []instanceConfig
 	Pinboard   pinboardConfig
 	LastSynced time.Time
+	HttpConfig httpConfig
 }
 
 type instanceConfig struct {
@@ -25,6 +30,10 @@ type instanceConfig struct {
 
 type pinboardConfig struct {
 	APIToken string
+}
+
+type httpConfig struct {
+	UserAgent string
 }
 
 func readConfig(fileName string) *config {
@@ -42,6 +51,7 @@ func readConfig(fileName string) *config {
 	if debug {
 		log.Printf("Config:\n\n%v", config)
 	}
+	config.HttpConfig.UserAgent = HttpUserAgent
 	return config
 }
 
