@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BookmarkSync.Core.Configuration;
+using BookmarkSync.Core.Interfaces;
+using BookmarkSync.Infrastructure.Services;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -19,6 +21,8 @@ public class Program
             .ConfigureServices(services =>
             {
                 services.AddSingleton(configManager);
+
+                services.AddTransient<IBookmarkingService, PinboardBookmarkingService>();
             })
             .Build();
         await host.StartAsync();
