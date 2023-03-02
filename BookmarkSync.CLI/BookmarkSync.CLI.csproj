@@ -7,4 +7,19 @@
         <Nullable>enable</Nullable>
     </PropertyGroup>
 
+    <ItemGroup>
+      <PackageReference Include="CiT.Common" Version="0.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\BookmarkSync.Core\BookmarkSync.Core.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Update="appsettings.json">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>

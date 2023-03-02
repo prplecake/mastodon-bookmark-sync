@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>disable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="CiT.Common" Version="0.0.1" />
+      <PackageReference Include="Microsoft.Extensions.Configuration" Version="7.0.0" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="7.0.3" />
+      <PackageReference Include="System.Configuration.ConfigurationManager" Version="7.0.0" />
+    </ItemGroup>
+
+</Project>
