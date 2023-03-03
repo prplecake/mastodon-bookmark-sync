@@ -24,18 +24,18 @@ public class ConfigManagerTests
 
         _configManager = new ConfigManager(_config);
     }
-    private IConfigManager _configManager;
-    private IConfiguration _config;
+    private IConfigManager? _configManager;
+    private IConfiguration? _config;
     [TestMethod]
     public void ConfigManager_HasProperties()
     {
         // Assert
-        Assert.AreEqual(3, _configManager.PropertyCount());
-        Assert.IsTrue(_configManager.HasProperty("Configuration"));
-        Assert.IsTrue(_configManager.HasProperty("Instances"));
-        Assert.IsTrue(_configManager.HasProperty("App"));
+        Assert.AreEqual(3, _configManager?.PropertyCount());
+        Assert.IsTrue(_configManager?.HasProperty("Configuration"));
+        Assert.IsTrue(_configManager?.HasProperty("Instances"));
+        Assert.IsTrue(_configManager?.HasProperty("App"));
 
-        Assert.IsTrue(_configManager.HasMethod("GetConfigValue"));
+        Assert.IsTrue(_configManager?.HasMethod("GetConfigValue"));
     }
     [TestMethod]
     public void GetConfigValue_Success()
@@ -44,7 +44,7 @@ public class ConfigManagerTests
         var expected = "Pinboard";
 
         // Act
-        string actual = _configManager.GetConfigValue("App:Bookmarking:Service");
+        string? actual = _configManager?.GetConfigValue("App:Bookmarking:Service");
 
         // Assert
         Assert.AreEqual(expected, actual);

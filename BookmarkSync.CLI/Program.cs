@@ -11,11 +11,11 @@ namespace BookmarkSync.CLI;
 
 public class Program
 {
-    private static IConfiguration Configuration;
+    private static IConfiguration? _configuration;
     public async static Task Main(string[] args)
     {
-        Configuration = SetupConfiguration(args);
-        IConfigManager configManager = new ConfigManager(Configuration);
+        _configuration = SetupConfiguration(args);
+        IConfigManager configManager = new ConfigManager(_configuration);
 
         using var host = Host.CreateDefaultBuilder(args)
             .ConfigureServices(services =>

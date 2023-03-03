@@ -10,9 +10,9 @@ namespace BookmarkSync.Core.Configuration;
 
 public interface IConfigManager
 {
-    App App { get; set; }
+    App? App { get; set; }
     IConfiguration Configuration { get; set; }
-    Instance[] Instances { get; set; }
+    List<Instance>? Instances { get; set; }
     string GetConfigValue(string key);
     void SaveToFile();
 }
@@ -22,19 +22,17 @@ public class ConfigManager : IConfigManager
         IConfiguration configuration)
     {
         Configuration = configuration;
-        var instance = Configuration.GetSection("Instances").Get<List<Instance>>();
-        var app = Configuration.GetSection("App").Get<App>();
-        var instances = Configuration.GetSection("Instances").Get<Instance[]>();
-        App = app;
+        App = Configuration.GetSection("App").Get<App>();
+        Instances = Configuration.GetSection("Instances").Get<List<Instance>>();
 
-        if (!App.IsValid())
+        if (App is not null && !App.IsValid())
         {
             throw new InvalidConfigurationException();
         }
     }
     public IConfiguration Configuration { get; set; }
-    public Instance[] Instances { get; set; }
-    public App App { get; set; }
+    public List<Instance>? Instances { get; set; }
+    public App? App { get; set; }
     public string GetConfigValue(string key)
     {
         string? value = Configuration[key];
