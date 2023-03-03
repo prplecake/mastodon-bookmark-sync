@@ -41,8 +41,8 @@ jobs:
   publish:
     strategy:
       matrix:
-        rid: [osx-x64, linux-x64, win-x64]
-    
+        rid: [ osx-x64, linux-x64, win-x64 ]
+
     runs-on: ubuntu-latest
     name: publish-${{matrix.rid}}
     needs: build

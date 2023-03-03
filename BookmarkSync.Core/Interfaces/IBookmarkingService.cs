@@ -1,6 +1,3 @@
 namespace BookmarkSync.Core.Interfaces;
 
-public interface IBookmarkingService
-{
-    
-}
+public interface IBookmarkingService { }

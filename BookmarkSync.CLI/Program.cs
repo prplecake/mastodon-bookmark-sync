@@ -27,22 +27,19 @@ public class Program
             .Build();
         await host.StartAsync();
         var lifetime = host.Services.GetRequiredService<IHostApplicationLifetime>();
-            
+
         // Do work here
         Console.WriteLine("Hello, world!");
-        
+
         // Shutdown
         configManager.SaveToFile();
-        
+
         lifetime.StopApplication();
         await host.WaitForShutdownAsync();
     }
-    private static IConfiguration SetupConfiguration(string[] args)
-    {
-        return new ConfigurationBuilder()
-            .AddJsonFile("appsettings.json", false, true)
-            .AddEnvironmentVariables()
-            .AddCommandLine(args)
-            .Build();
-    }
+    private static IConfiguration SetupConfiguration(string[] args) => new ConfigurationBuilder()
+        .AddJsonFile("appsettings.json", false, true)
+        .AddEnvironmentVariables()
+        .AddCommandLine(args)
+        .Build();
 }
