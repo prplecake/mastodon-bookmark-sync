@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
@@ -43,7 +44,9 @@ public class BookmarkSyncService : IHostedService
             List<Bookmark>? bookmarks = null;
             try
             {
-                bookmarks = await client.GetBookmarks();
+                bookmarks = (await client.GetBookmarks())
+                    .Where(b => b.Visibility is not ("private" or "direct"))
+                    .ToList();
             }
             catch (HttpRequestException ex)
             {
