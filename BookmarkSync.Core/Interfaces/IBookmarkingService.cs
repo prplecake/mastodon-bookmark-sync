@@ -1,3 +1,4 @@
+using System.Net.Http;
 using System.Threading.Tasks;
 using BookmarkSync.Core.Entities;
 
@@ -9,5 +10,5 @@ public interface IBookmarkingService
     /// Saves a bookmark to the bookmarking service.
     /// </summary>
     /// <param name="bookmark">A service's bookmark implementation.</param>
-    public Task Save(Bookmark bookmark);
+    public Task<HttpResponseMessage> Save(Bookmark bookmark);
 }

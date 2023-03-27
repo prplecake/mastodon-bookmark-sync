@@ -4,9 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Reflection;
-using System.Threading.Tasks;
 using BookmarkSync.Core.Configuration;
-using BookmarkSync.Core.Entities;
 using BookmarkSync.Core.Interfaces;
 using BookmarkSync.Infrastructure.Services.Pinboard;
 
@@ -17,7 +15,7 @@ public abstract class BookmarkingService
     /// <summary>
     /// The HttpClient object.
     /// </summary>
-    private static readonly HttpClient Client = new();
+    protected static readonly HttpClient Client = new();
     protected BookmarkingService()
     {
         // Setup HttpClient

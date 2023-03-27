@@ -2,7 +2,7 @@ using System;
 using System.Threading;
 using System.Threading.Tasks;
 using BookmarkSync.Core.Configuration;
-using BookmarkSync.Core.Entities;
+using BookmarkSync.Core.Entities.Config;
 using BookmarkSync.Core.Interfaces;
 using Microsoft.Extensions.Hosting;
 using Serilog;
