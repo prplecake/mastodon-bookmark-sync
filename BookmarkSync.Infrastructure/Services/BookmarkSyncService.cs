@@ -1,8 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using BookmarkSync.Core.Configuration;
+using BookmarkSync.Core.Entities;
 using BookmarkSync.Core.Entities.Config;
 using BookmarkSync.Core.Interfaces;
 using Microsoft.Extensions.Hosting;
@@ -38,17 +40,34 @@ public class BookmarkSyncService : IHostedService
             _logger.Debug("Setting up Mastodon API client");
             var client = new Mastodon.ApiClient(instance);
             // Get bookmarks from mastodon account
-            var bookmarks = await client.GetBookmarks();
+            List<Bookmark>? bookmarks = null;
+            try
+            {
+                bookmarks = await client.GetBookmarks();
+            }
+            catch (HttpRequestException ex)
+            {
+                _logger.Error(ex, "Failed to retrieve bookmarks from {Instance}", instance);
+            }
 
             if (bookmarks == null || bookmarks.Count == 0)
             {
                 _logger.Information("No bookmarks received");
-                return;
+                continue;
             }
             foreach (var bookmark in bookmarks)
             {
                 // Save bookmarks to bookmarking service
-                var result = await _bookmarkingService.Save(bookmark);
+                HttpResponseMessage result;
+                try
+                {
+                    result = await _bookmarkingService.Save(bookmark);
+                }
+                catch (Exception ex)
+                {
+                    _logger.Error(ex, "Failed to save bookmark");
+                    continue;
+                }
 
                 if (instance.DeleteBookmarks && result.IsSuccessStatusCode)
                 {

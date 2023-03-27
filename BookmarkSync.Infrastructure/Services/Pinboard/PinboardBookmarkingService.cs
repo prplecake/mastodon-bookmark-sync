@@ -45,6 +45,9 @@ public class PinboardBookmarkingService : BookmarkingService, IBookmarkingServic
         var requestUri = builder.ToString();
         _logger.Debug("Request URI: {RequestUri}", requestUri);
 
-        return await Client.GetAsync(requestUri);
+        var response = await Client.GetAsync(requestUri);
+        response.EnsureSuccessStatusCode();
+        _logger.Debug("Response status: {StatusCode}", response.StatusCode);
+        return response;
     }
 }

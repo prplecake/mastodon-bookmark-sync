@@ -1,8 +1,10 @@
+using Newtonsoft.Json;
+
 namespace BookmarkSync.Core.Entities;
 
 public class Account
 {
-    public string? Name { get; set; }
+    [JsonProperty("acct")] public string? Name { get; set; }
     public Account(string name)
     {
         Name = name;
