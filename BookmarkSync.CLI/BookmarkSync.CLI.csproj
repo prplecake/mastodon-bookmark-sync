@@ -7,7 +7,6 @@
         <Nullable>enable</Nullable>
         <AssemblyName>mastodon-bookmark-sync</AssemblyName>
     </PropertyGroup>
-    </PropertyGroup>
 
     <ItemGroup>
       <PackageReference Include="CiT.Common" Version="0.0.1" />
