@@ -5,6 +5,8 @@
         <TargetFramework>net7.0</TargetFramework>
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
+        <AssemblyName>mastodon-bookmark-sync</AssemblyName>
+    </PropertyGroup>
     </PropertyGroup>
 
     <ItemGroup>

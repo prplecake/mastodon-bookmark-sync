@@ -1,6 +1,6 @@
 <component name="ProjectRunConfigurationManager">
   <configuration default="false" name="BookmarkSync.CLI" type="DotNetProject" factoryName=".NET Project">
-    <option name="EXE_PATH" value="$PROJECT_DIR$/BookmarkSync.CLI/bin/Debug/net7.0/BookmarkSync.CLI" />
+    <option name="EXE_PATH" value="$PROJECT_DIR$/BookmarkSync.CLI/bin/Debug/net7.0/mastodon-bookmark-sync" />
     <option name="PROGRAM_PARAMETERS" value="" />
     <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/BookmarkSync.CLI/bin/Debug/net7.0" />
     <option name="PASS_PARENT_ENVS" value="1" />
