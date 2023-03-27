@@ -5,6 +5,7 @@ using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Reflection;
 using System.Threading.Tasks;
+using BookmarkSync.Core;
 using BookmarkSync.Core.Entities;
 using BookmarkSync.Core.Entities.Config;
 using Newtonsoft.Json;
@@ -21,8 +22,7 @@ public class ApiClient
     {
         _instance = instance;
         _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
-        _client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("mastodon-bookmark-sync",
-            FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion));
+        _client.DefaultRequestHeaders.UserAgent.Add(Meta.UserAgent);
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _instance.AccessToken);
     }
     public async Task<List<Bookmark>?> GetBookmarks()

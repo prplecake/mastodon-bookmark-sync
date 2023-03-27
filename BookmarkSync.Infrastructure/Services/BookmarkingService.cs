@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Reflection;
+using BookmarkSync.Core;
 using BookmarkSync.Core.Configuration;
 using BookmarkSync.Core.Interfaces;
 using BookmarkSync.Infrastructure.Services.Pinboard;
@@ -20,8 +21,7 @@ public abstract class BookmarkingService
     {
         // Setup HttpClient
         Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
-        Client.DefaultRequestHeaders.UserAgent.Add(new ProductInfoHeaderValue("mastodon-bookmark-sync",
-            FileVersionInfo.GetVersionInfo(Assembly.GetExecutingAssembly().Location).FileVersion));
+        Client.DefaultRequestHeaders.UserAgent.Add(Meta.UserAgent);
     }
     /// <summary>
     /// The API auth token..
