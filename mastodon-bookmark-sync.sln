@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarkSync.Infrastructure
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarkSync.Core.Tests", "BookmarkSync.Core.Tests\BookmarkSync.Core.Tests.csproj", "{9B28E255-C1D4-43A6-861A-DD1752F31A0E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarkSync.Infrastructure.Tests", "BookmarkSync.Infrastructure.Tests\BookmarkSync.Infrastructure.Tests.csproj", "{DA6C5B23-C780-479D-8D14-20307A5A91D8}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -37,5 +39,9 @@ Global
 		{9B28E255-C1D4-43A6-861A-DD1752F31A0E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B28E255-C1D4-43A6-861A-DD1752F31A0E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B28E255-C1D4-43A6-861A-DD1752F31A0E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DA6C5B23-C780-479D-8D14-20307A5A91D8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DA6C5B23-C780-479D-8D14-20307A5A91D8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DA6C5B23-C780-479D-8D14-20307A5A91D8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DA6C5B23-C780-479D-8D14-20307A5A91D8}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
