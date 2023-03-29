@@ -32,7 +32,7 @@ public class BookmarkSyncService : IHostedService
 
         if (_instances == null || _instances.Count == 0)
         {
-            _logger.Information("No instances configured");
+            _logger.Warning("No instances configured");
             return;
         }
         foreach (var instance in _instances)
@@ -74,6 +74,7 @@ public class BookmarkSyncService : IHostedService
 
                 if (instance.DeleteBookmarks && result.IsSuccessStatusCode)
                 {
+                    _logger.Information("Deleting bookmark");
                     await client.DeleteBookmark(bookmark);
                 }
             }
