@@ -5,9 +5,9 @@ using System.Net.Mime;
 using BookmarkSync.Core;
 using BookmarkSync.Core.Configuration;
 using BookmarkSync.Core.Interfaces;
-using BookmarkSync.Infrastructure.Services.Pinboard;
+using BookmarkSync.Infrastructure.Services.Bookmarking.Pinboard;
 
-namespace BookmarkSync.Infrastructure.Services;
+namespace BookmarkSync.Infrastructure.Services.Bookmarking;
 
 public abstract class BookmarkingService
 {

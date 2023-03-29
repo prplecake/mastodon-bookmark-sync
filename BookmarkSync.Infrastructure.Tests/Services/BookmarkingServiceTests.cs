@@ -1,6 +1,6 @@
 using BookmarkSync.Core.Configuration;
-using BookmarkSync.Infrastructure.Services;
-using BookmarkSync.Infrastructure.Services.Pinboard;
+using BookmarkSync.Infrastructure.Services.Bookmarking;
+using BookmarkSync.Infrastructure.Services.Bookmarking.Pinboard;
 using Microsoft.Extensions.Configuration;
 
 namespace BookmarkSync.Infrastructure.Tests.Services;
