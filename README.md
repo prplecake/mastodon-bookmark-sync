@@ -24,18 +24,22 @@ vim appsettings.json # don't forget to edit it!
 ```
 
 You'll need an access token from your Mastodon server.
-i.e. `your.instance/settings/applications` 
+i.e. `your.instance/settings/applications`
 
 [fediverse-access-token]:https://tools.splat.soy/fediverse-access-token/
 
 And you'll need your
 [Pinboard API token](https://pinboard.in/settings/password).
 
-Once you've got it configured, just run it. You might want to add it to your crontab, or your other favorite task
-scheduler:
+Once you've got it configured, just run it. You might want to add it to your
+crontab, or your other favorite task scheduler:
 
 ```text
 0 */6 * * * cd /path/to/mastodon-bookmark-sync; ./mastodon-bookmark-sync
 ```
 
 [config-blob]:https://github.com/prplecake/mastodon-bookmark-sync/blob/master/BookmarkSync.CLI/appsettings.Example.json
+
+## questions
+
+* [Help! I can't run this on my Mac.](https://github.com/prplecake/mastodon-bookmark-sync/wiki/Questions#help-i-cant-run-this-on-my-mac)
