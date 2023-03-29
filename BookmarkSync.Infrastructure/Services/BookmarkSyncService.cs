@@ -44,7 +44,7 @@ public class BookmarkSyncService : IHostedService
             List<Bookmark>? bookmarks = null;
             try
             {
-                bookmarks = (await client.GetBookmarks())
+                bookmarks = (await client.GetBookmarks())?
                     .Where(b => b.Visibility is not ("private" or "direct"))
                     .ToList();
             }

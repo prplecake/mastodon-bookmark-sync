@@ -8,7 +8,7 @@ using Serilog;
 
 namespace BookmarkSync.CLI;
 
-public class Program
+public static class Program
 {
     private static IConfiguration? _configuration;
     public static int Main(string[] args)
@@ -24,7 +24,7 @@ public class Program
         try
         {
             Log.Information("Starting host");
-            BuildHost(args, configManager).Run();
+            BuildHost(configManager).Run();
             return 0;
         }
         catch (Exception ex)
@@ -39,7 +39,7 @@ public class Program
             Log.CloseAndFlush();
         }
     }
-    public static IHost BuildHost(string[] args, IConfigManager configManager) =>
+    private static IHost BuildHost(IConfigManager configManager) =>
         new HostBuilder()
             .ConfigureServices(services =>
             {

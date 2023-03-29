@@ -19,7 +19,6 @@ public static class HtmlUtilities
     }
     private static void ConvertTo(HtmlNode node, TextWriter outText)
     {
-        string html;
         switch (node.NodeType)
         {
             case HtmlNodeType.Comment:
@@ -36,7 +35,7 @@ public static class HtmlUtilities
                     break;
                 
                 // get text
-                html = ((HtmlTextNode)node).Text;
+                string html = ((HtmlTextNode)node).Text;
                 
                 // is it a special closing node output as text?
                 if (HtmlNode.IsOverlappedClosingElement(html))
@@ -72,9 +71,9 @@ public static class HtmlUtilities
     }
     private static void ConvertContentTo(HtmlNode node, TextWriter outText)
     {
-        foreach (var subnode in node.ChildNodes)
+        foreach (var subNode in node.ChildNodes)
         {
-            ConvertTo(subnode, outText);
+            ConvertTo(subNode, outText);
         }
     }
 }

@@ -10,9 +10,8 @@ namespace BookmarkSync.Core.Configuration;
 
 public interface IConfigManager
 {
-    App App { get; set; }
-    IConfiguration Configuration { get; set; }
-    List<Instance>? Instances { get; set; }
+    App App { get; }
+    List<Instance>? Instances { get; }
     string GetConfigValue(string key);
     void SaveToFile();
 }
