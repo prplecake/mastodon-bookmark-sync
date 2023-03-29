@@ -5,6 +5,7 @@ using System.IO;
 using BookmarkSync.Core.Entities.Config;
 using CiT.Common.Exceptions;
 using Microsoft.Extensions.Configuration;
+using Serilog;
 
 namespace BookmarkSync.Core.Configuration;
 
@@ -17,15 +18,17 @@ public interface IConfigManager
 }
 public class ConfigManager : IConfigManager
 {
+    private static readonly ILogger _logger = Log.ForContext<ConfigManager>();
     public ConfigManager(
         IConfiguration configuration)
     {
         Configuration = configuration;
-        App = Configuration.GetSection("App").Get<App>() ?? throw new NullReferenceException();
+        App = Configuration.GetSection("App").Get<App>() ?? throw new InvalidOperationException();
         Instances = Configuration.GetSection("Instances").Get<List<Instance>>();
 
         if (!App.IsValid())
         {
+            _logger.Error("App configuration is invalid");
             throw new InvalidConfigurationException();
         }
     }
@@ -34,6 +37,7 @@ public class ConfigManager : IConfigManager
     public App App { get; set; }
     public string GetConfigValue(string key)
     {
+        _logger.Debug("Running {Method} for key: {Key}", "GetConfigValue", key);
         string? value = Configuration[key];
         if (string.IsNullOrWhiteSpace(value))
         {
