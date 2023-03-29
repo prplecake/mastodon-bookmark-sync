@@ -6,6 +6,7 @@ using BookmarkSync.Core;
 using BookmarkSync.Core.Configuration;
 using BookmarkSync.Core.Interfaces;
 using BookmarkSync.Infrastructure.Services.Bookmarking.Pinboard;
+using BookmarkSync.Infrastructure.Services.Bookmarking.Raindropio;
 
 namespace BookmarkSync.Infrastructure.Services.Bookmarking;
 
@@ -34,6 +35,7 @@ public abstract class BookmarkingService
         return configManager.App.Bookmarking.Service switch
         {
             "Pinboard" => new PinboardBookmarkingService(configManager),
+            "Raindropio" => new RaindropioBookmarkingService(configManager),
             _ => throw new InvalidOperationException("Bookmark service either not provided or unknown")
         };
     }
