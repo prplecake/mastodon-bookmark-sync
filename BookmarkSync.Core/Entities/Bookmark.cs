@@ -14,6 +14,6 @@ public class Bookmark
     public string? Id { get; set; }
     public string? Uri { get; set; }
     public string? Visibility { get; set; }
-    public string DefaultTags =>
-        string.Join(" ", $"via:@{Account}", "via:mastodon-bookmark-sync");
+    public string[] DefaultTags =>
+        new[] { $"via:@{Account}", "via:mastodon-bookmark-sync"};
 }
