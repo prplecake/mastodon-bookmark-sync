@@ -40,7 +40,7 @@ public class PinboardBookmarkingService : BookmarkingService, IBookmarkingServic
         {
             query["extended"] = extended;
         }
-        query["tags"] = string.Join(" ", $"via:@{bookmark.Account}", "via:mastodon-bookmark-sync");
+        query["tags"] = bookmark.DefaultTags;
         builder.Query = query.ToString();
         var requestUri = builder.ToString();
         _logger.Debug("Request URI: {RequestUri}", requestUri);
