@@ -1,4 +1,3 @@
-using System.Configuration;
 using BookmarkSync.Core.Utilities;
 
 namespace BookmarkSync.Core.Tests.Utilities;

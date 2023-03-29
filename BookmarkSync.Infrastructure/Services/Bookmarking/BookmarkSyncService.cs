@@ -11,7 +11,7 @@ using BookmarkSync.Core.Interfaces;
 using Microsoft.Extensions.Hosting;
 using Serilog;
 
-namespace BookmarkSync.Infrastructure.Services;
+namespace BookmarkSync.Infrastructure.Services.Bookmarking;
 
 public class BookmarkSyncService : IHostedService
 {
