@@ -34,7 +34,7 @@ public class Program
         }
         finally
         {
-            // Shutdown
+            Log.Information("Stopping host");
             configManager.SaveToFile();
             Log.CloseAndFlush();
         }
