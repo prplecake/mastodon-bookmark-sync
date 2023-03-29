@@ -6,17 +6,18 @@ namespace BookmarkSync.Core.Tests.Entities;
 public class BookmarkTests
 {
     [TestMethod]
-    public void App_HasProperties()
+    public void Bookmark_HasProperties()
     {
         // Arrange
         Bookmark obj = new();
 
         // Assert
-        Assert.AreEqual(5, obj.PropertyCount());
+        Assert.AreEqual(6, obj.PropertyCount());
         Assert.IsTrue(obj.HasProperty("Account"));
         Assert.IsTrue(obj.HasProperty("Content"));
         Assert.IsTrue(obj.HasProperty("Id"));
         Assert.IsTrue(obj.HasProperty("Uri"));
         Assert.IsTrue(obj.HasProperty("Visibility"));
+        Assert.IsTrue(obj.HasProperty("DefaultTags"));
     }
 }
