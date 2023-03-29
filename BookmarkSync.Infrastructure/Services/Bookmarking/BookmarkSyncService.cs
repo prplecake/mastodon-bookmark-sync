@@ -28,8 +28,6 @@ public class BookmarkSyncService : IHostedService
     /// <inheritdoc />
     public async Task StartAsync(CancellationToken stoppingToken)
     {
-        _logger.Information("The current time is: {CurrentTime}", DateTimeOffset.UtcNow);
-
         if (_instances == null || _instances.Count == 0)
         {
             _logger.Information("No instances configured");
