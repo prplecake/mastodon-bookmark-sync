@@ -53,7 +53,7 @@ public class BookmarkingServiceTests
         var obj = BookmarkingService.GetBookmarkingService(configManager);
 
         // Assert
-        Assert.AreEqual(obj.GetType(), typeof(PinboardBookmarkingService));
+        Assert.AreEqual(typeof(PinboardBookmarkingService), obj.GetType());
         Assert.IsInstanceOfType(obj, typeof(PinboardBookmarkingService));
     }
 }
