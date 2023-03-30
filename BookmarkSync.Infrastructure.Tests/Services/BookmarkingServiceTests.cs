@@ -1,5 +1,6 @@
 using BookmarkSync.Core.Configuration;
 using BookmarkSync.Infrastructure.Services.Bookmarking;
+using BookmarkSync.Infrastructure.Services.Bookmarking.LinkAce;
 using BookmarkSync.Infrastructure.Services.Bookmarking.Pinboard;
 using BookmarkSync.Infrastructure.Services.Bookmarking.Raindropio;
 using Microsoft.Extensions.Configuration;
@@ -56,6 +57,35 @@ public class BookmarkingServiceTests
         // Assert
         Assert.AreEqual(typeof(PinboardBookmarkingService), obj.GetType());
         Assert.IsInstanceOfType(obj, typeof(PinboardBookmarkingService));
+    }
+    [TestMethod]
+    public void GetBookmarkingService_LinkAce()
+    {
+        // Arrange
+        var config = new Dictionary<string, string?>
+        {
+            {
+                "App:Bookmarking:Service", "LinkAce"
+            },
+            {
+                "App:Bookmarking:ApiToken", "secret:123456789"
+            },
+            {
+                "App:Bookmarking:LinkAceUri", "https://your-linkace-url.com"
+            }
+        };
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(config)
+            .Build();
+
+        IConfigManager configManager = new ConfigManager(configuration);
+
+        // Act
+        var obj = BookmarkingService.GetBookmarkingService(configManager);
+
+        // Assert
+        Assert.AreEqual(typeof(LinkAceBookmarkingService), obj.GetType());
+        Assert.IsInstanceOfType(obj, typeof(LinkAceBookmarkingService));
     }
     [TestMethod]
     public void GetBookmarkingService_Raindropio()
