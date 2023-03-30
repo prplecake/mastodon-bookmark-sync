@@ -33,32 +33,6 @@ public class BookmarkingServiceTests
         // Assert - Exception
     }
     [TestMethod]
-    public void GetBookmarkingService_Pinboard()
-    {
-        // Arrange
-        var config = new Dictionary<string, string?>
-        {
-            {
-                "App:Bookmarking:Service", "Pinboard"
-            },
-            {
-                "App:Bookmarking:ApiToken", "secret:123456789"
-            }
-        };
-        var configuration = new ConfigurationBuilder()
-            .AddInMemoryCollection(config)
-            .Build();
-
-        IConfigManager configManager = new ConfigManager(configuration);
-
-        // Act
-        var obj = BookmarkingService.GetBookmarkingService(configManager);
-
-        // Assert
-        Assert.AreEqual(typeof(PinboardBookmarkingService), obj.GetType());
-        Assert.IsInstanceOfType(obj, typeof(PinboardBookmarkingService));
-    }
-    [TestMethod]
     public void GetBookmarkingService_LinkAce()
     {
         // Arrange
@@ -86,6 +60,32 @@ public class BookmarkingServiceTests
         // Assert
         Assert.AreEqual(typeof(LinkAceBookmarkingService), obj.GetType());
         Assert.IsInstanceOfType(obj, typeof(LinkAceBookmarkingService));
+    }
+    [TestMethod]
+    public void GetBookmarkingService_Pinboard()
+    {
+        // Arrange
+        var config = new Dictionary<string, string?>
+        {
+            {
+                "App:Bookmarking:Service", "Pinboard"
+            },
+            {
+                "App:Bookmarking:ApiToken", "secret:123456789"
+            }
+        };
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(config)
+            .Build();
+
+        IConfigManager configManager = new ConfigManager(configuration);
+
+        // Act
+        var obj = BookmarkingService.GetBookmarkingService(configManager);
+
+        // Assert
+        Assert.AreEqual(typeof(PinboardBookmarkingService), obj.GetType());
+        Assert.IsInstanceOfType(obj, typeof(PinboardBookmarkingService));
     }
     [TestMethod]
     public void GetBookmarkingService_Raindropio()
