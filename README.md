@@ -9,6 +9,11 @@ bookmarks with Pinboard.
 
 mastodon-bookmark-sync supports multiple fediverse accounts.
 
+**Supported bookmarking services:**
+
+- LinkAce
+- ~~Pinboard~~ *(deprecated)*
+
 ## getting started
 
 You probably just want to grab an executable from the [Releases][releases] page.
