@@ -113,4 +113,30 @@ public class BookmarkingServiceTests
         Assert.AreEqual(typeof(RaindropioBookmarkingService), obj.GetType());
         Assert.IsInstanceOfType(obj, typeof(RaindropioBookmarkingService));
     }
+    [TestMethod]
+    public void GetBookmarkingService_Raindropio2()
+    {
+        // Arrange
+        var config = new Dictionary<string, string?>
+        {
+            {
+                "App:Bookmarking:Service", "Raindrop.io"
+            },
+            {
+                "App:Bookmarking:ApiToken", "228CCE89-7E7B-4D15-936A-39892AE86110"
+            }
+        };
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(config)
+            .Build();
+
+        IConfigManager configManager = new ConfigManager(configuration);
+
+        // Act
+        var obj = BookmarkingService.GetBookmarkingService(configManager);
+
+        // Assert
+        Assert.AreEqual(typeof(RaindropioBookmarkingService), obj.GetType());
+        Assert.IsInstanceOfType(obj, typeof(RaindropioBookmarkingService));
+    }
 }
