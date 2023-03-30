@@ -12,7 +12,7 @@ mastodon-bookmark-sync supports multiple fediverse accounts.
 **Supported bookmarking services:**
 
 - LinkAce
-- ~~Pinboard~~ *(deprecated)*
+- Pinboard
 
 ## getting started
 
