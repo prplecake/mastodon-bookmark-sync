@@ -8,7 +8,6 @@ using System.Threading.Tasks;
 using BookmarkSync.Core.Configuration;
 using BookmarkSync.Core.Entities;
 using BookmarkSync.Core.Interfaces;
-using BookmarkSync.Core.Utilities;
 using Newtonsoft.Json;
 using Serilog;
 
