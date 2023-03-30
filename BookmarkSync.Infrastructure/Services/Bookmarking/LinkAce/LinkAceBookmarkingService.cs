@@ -42,6 +42,9 @@ public class LinkAceBookmarkingService : BookmarkingService, IBookmarkingService
             },
             {
                 "is_private", true
+            },
+            {
+                "check_disabled", true
             }
         };
         var stringContent = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8,
