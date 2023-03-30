@@ -37,7 +37,7 @@ public abstract class BookmarkingService
         {
             "LinkAce" => new LinkAceBookmarkingService(configManager),
             "Pinboard" => new PinboardBookmarkingService(configManager),
-            "Raindropio" => new RaindropioBookmarkingService(configManager),
+            "Raindropio" or "Raindrop.io" => new RaindropioBookmarkingService(configManager),
             _ => throw new InvalidOperationException("Bookmark service either not provided or unknown")
         };
     }
