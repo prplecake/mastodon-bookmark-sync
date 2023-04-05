@@ -3,20 +3,8 @@ name: .NET
 on:
   push:
     branches: [ master ]
-    paths-ignore:
-      - 'README.md'
-      - '.gitignore'
-      - 'appsettings.Example.json'
-      - '.github/**'
-      - '.idea/**'
   pull_request:
     branches: [ master ]
-    paths-ignore:
-      - 'README.md'
-      - '.gitignore'
-      - 'appsettings.Example.json'
-      - '.github/**'
-      - '.idea/**'
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
