@@ -55,10 +55,10 @@ jobs:
           fetch-depth: 0
       - uses: actions/cache@v3
         with:
-        path: ~/.nuget/packages
-        key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-nuget-
+          path: ~/.nuget/packages
+          key: ${{ runner.os }}-nuget-${{ hashFiles('**/packages.lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-nuget-
       - name: Setup .NET
         uses: actions/setup-dotnet@v3
         with:
