@@ -1,8 +1,4 @@
 using System.Web;
-using BookmarkSync.Core.Configuration;
-using BookmarkSync.Core.Entities;
-using BookmarkSync.Core.Interfaces;
-using Serilog;
 
 namespace BookmarkSync.Infrastructure.Services.Bookmarking.Pinboard;
 

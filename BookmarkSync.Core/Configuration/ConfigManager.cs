@@ -1,8 +1,6 @@
 using System.Configuration;
 using BookmarkSync.Core.Entities.Config;
-using CiT.Common.Exceptions;
 using Microsoft.Extensions.Configuration;
-using Serilog;
 
 namespace BookmarkSync.Core.Configuration;
 
