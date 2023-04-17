@@ -1,6 +1,3 @@
-using System;
-using System.Net.Http;
-using System.Threading.Tasks;
 using System.Web;
 using BookmarkSync.Core.Configuration;
 using BookmarkSync.Core.Entities;

@@ -1,5 +1,3 @@
-using System.Net.Http;
-using System.Threading.Tasks;
 using BookmarkSync.Core.Entities;
 
 namespace BookmarkSync.Core.Interfaces;

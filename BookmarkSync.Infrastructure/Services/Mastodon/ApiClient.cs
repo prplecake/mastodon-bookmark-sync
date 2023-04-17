@@ -1,8 +1,5 @@
-using System.Collections.Generic;
-using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Net.Mime;
-using System.Threading.Tasks;
 using BookmarkSync.Core;
 using BookmarkSync.Core.Entities;
 using BookmarkSync.Core.Entities.Config;

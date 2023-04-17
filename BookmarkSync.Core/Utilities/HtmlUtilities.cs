@@ -1,5 +1,3 @@
-using System;
-using System.IO;
 using HtmlAgilityPack;
 
 namespace BookmarkSync.Core.Utilities;
