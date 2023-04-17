@@ -1,9 +1,3 @@
-using BookmarkSync.Core.Configuration;
-using BookmarkSync.Infrastructure.Services.Bookmarking;
-using BookmarkSync.Infrastructure.Services.Bookmarking.LinkAce;
-using BookmarkSync.Infrastructure.Services.Bookmarking.Pinboard;
-using Microsoft.Extensions.Configuration;
-
 namespace BookmarkSync.Infrastructure.Tests.Services;
 
 [TestClass]

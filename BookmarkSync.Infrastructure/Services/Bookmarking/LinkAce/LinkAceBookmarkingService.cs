@@ -1,11 +1,7 @@
 using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
-using BookmarkSync.Core.Configuration;
-using BookmarkSync.Core.Entities;
-using BookmarkSync.Core.Interfaces;
 using Newtonsoft.Json;
-using Serilog;
 
 namespace BookmarkSync.Infrastructure.Services.Bookmarking.LinkAce;
 

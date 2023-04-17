@@ -1,8 +1,6 @@
 using System.Net.Http.Headers;
 using System.Net.Mime;
 using BookmarkSync.Core;
-using BookmarkSync.Core.Configuration;
-using BookmarkSync.Core.Interfaces;
 using BookmarkSync.Infrastructure.Services.Bookmarking.LinkAce;
 using BookmarkSync.Infrastructure.Services.Bookmarking.Pinboard;
 

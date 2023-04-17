@@ -1,5 +1,3 @@
-using CiT.Common.Attributes;
-
 namespace BookmarkSync.Core.Entities.Config;
 
 public class App : ConfigurationBase

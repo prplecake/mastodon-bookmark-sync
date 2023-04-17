@@ -1,5 +1,3 @@
-using BookmarkSync.Core.Entities;
-
 namespace BookmarkSync.Core.Tests.Entities;
 
 [TestClass]
