@@ -30,7 +30,7 @@ jobs:
       - name: Restore dependencies
         run: |
           dotnet nuget add source --username prplecake --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/CompostInTraining/index.json"
-          dotnet restore --locked-mode
+          dotnet restore
       - name: Build
         run: dotnet build --no-restore
 

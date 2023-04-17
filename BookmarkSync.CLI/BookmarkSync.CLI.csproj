@@ -6,8 +6,7 @@
         <ImplicitUsings>disable</ImplicitUsings>
         <Nullable>enable</Nullable>
         <AssemblyName>mastodon-bookmark-sync</AssemblyName>
-        <Version>2.0.0</Version>
-        <RestorePackagesWithLockFile>true</RestorePackagesWithLockFile>
+        <Version>2.0.0-alpha</Version>
     </PropertyGroup>
 
     <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
