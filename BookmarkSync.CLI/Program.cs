@@ -1,5 +1,4 @@
-﻿using System;
-using BookmarkSync.Core.Configuration;
+﻿using BookmarkSync.Core.Configuration;
 using BookmarkSync.Infrastructure.Services.Bookmarking;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

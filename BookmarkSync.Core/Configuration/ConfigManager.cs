@@ -1,7 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.Configuration;
-using System.IO;
 using BookmarkSync.Core.Entities.Config;
 using CiT.Common.Exceptions;
 using Microsoft.Extensions.Configuration;
