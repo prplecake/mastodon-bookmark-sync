@@ -24,7 +24,7 @@ public class LinkAceBookmarkingService : BookmarkingService, IBookmarkingService
     public async Task<HttpResponseMessage> Save(Bookmark bookmark)
     {
         // Prep payload
-        Dictionary<string, object> payload = new()
+        Dictionary<string, object?> payload = new()
         {
             {
                 "url", bookmark.Uri
