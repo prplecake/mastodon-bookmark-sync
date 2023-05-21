@@ -25,8 +25,8 @@ it. An example configuration can be found [here][config-blob]. You can also
 just copy the example:
 
 ```shell
-cp appsettings.Example.json appsettings.json
-vim appsettings.json # don't forget to edit it!
+cp appsettings.Example.json appsettings.Production.json
+vim appsettings.Production.json # don't forget to edit it!
 ```
 
 You'll need an access token from your Mastodon server.

@@ -35,4 +35,10 @@
       </None>
     </ItemGroup>
 
+    <ItemGroup>
+      <None Include="appsettings.Development.json" Condition="Exists('appsettings.Development.json')">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+    </ItemGroup>
+
 </Project>
