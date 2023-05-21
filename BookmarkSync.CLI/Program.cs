@@ -50,6 +50,7 @@ public static class Program
             .Build();
     private static IConfiguration SetupConfiguration(string[] args) => new ConfigurationBuilder()
         .AddJsonFile("appsettings.json", false, true)
+        .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("MBS_ENVIRONMENT") ?? "Production"}.json", false, true)
         .AddEnvironmentVariables()
         .AddCommandLine(args)
         .Build();
