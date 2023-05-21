@@ -44,7 +44,10 @@ jobs:
       ZipFile: mastodon-bookmark-sync-${{ github.ref_name }}.zip
     strategy:
       matrix:
-        rid: [ linux-x64, win-x64, osx-x64 ]
+        rid: [
+          linux-x64, linux-arm64,
+          win-x64, osx-x64, 
+        ]
     
     runs-on: ubuntu-latest
     name: publish-${{matrix.rid}}
