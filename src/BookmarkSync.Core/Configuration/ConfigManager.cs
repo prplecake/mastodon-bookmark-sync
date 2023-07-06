@@ -44,5 +44,6 @@ public class ConfigManager : IConfigManager
     public void SaveToFile()
     {
         Console.WriteLine(Directory.GetCurrentDirectory());
+        throw new NotImplementedException();
     }
 }
