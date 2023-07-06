@@ -1,3 +1,4 @@
+using System.Configuration;
 using BookmarkSync.Core.Configuration;
 using Microsoft.Extensions.Configuration;
 
@@ -48,5 +49,17 @@ public class ConfigManagerTests
 
         // Assert
         Assert.AreEqual(expected, actual);
+    }
+    [TestMethod]
+    [ExpectedException(typeof(ConfigurationErrorsException))]
+    public void GetConfigValue_InvalidKey()
+    {
+        // Arrange
+        var expected = "Pinner";
+
+        // Act
+        string? actual = _configManager?.GetConfigValue("Apps:Bookmarking:Service");
+
+        // Assert - Exception
     }
 }
