@@ -27,7 +27,7 @@ public class ConfigManager : IConfigManager
             throw new InvalidConfigurationException();
         }
     }
-    public IConfiguration Configuration { get; }
+    private IConfiguration Configuration { get; }
     public List<Instance>? Instances { get; }
     public App App { get; }
     public string GetConfigValue(string key)
