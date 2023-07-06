@@ -27,9 +27,9 @@ public class ConfigManager : IConfigManager
             throw new InvalidConfigurationException();
         }
     }
-    public IConfiguration Configuration { get; set; }
-    public List<Instance>? Instances { get; set; }
-    public App App { get; set; }
+    public IConfiguration Configuration { get; }
+    public List<Instance>? Instances { get; }
+    public App App { get; }
     public string GetConfigValue(string key)
     {
         _logger.Debug("Running {Method} for key: {Key}", "GetConfigValue", key);
