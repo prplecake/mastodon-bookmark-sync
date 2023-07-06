@@ -31,8 +31,7 @@ public class ConfigManagerTests
     public void ConfigManager_HasProperties()
     {
         // Assert
-        Assert.AreEqual(3, _configManager?.PropertyCount());
-        Assert.IsTrue(_configManager?.HasProperty("Configuration"));
+        Assert.AreEqual(2, _configManager?.PropertyCount());
         Assert.IsTrue(_configManager?.HasProperty("Instances"));
         Assert.IsTrue(_configManager?.HasProperty("App"));
 
