@@ -1,14 +1,15 @@
 using BookmarkSync.Core.Entities.Config;
+using BookmarkSync.Infrastructure.Services.Mastodon;
 using Microsoft.Extensions.Hosting;
 
 namespace BookmarkSync.Infrastructure.Services.Bookmarking;
 
 public class BookmarkSyncService : IHostedService
 {
+    private static readonly ILogger _logger = Log.ForContext<BookmarkSyncService>();
+    private readonly IBookmarkingService _bookmarkingService;
     private readonly IHostApplicationLifetime _host;
     private readonly List<Instance>? _instances;
-    private readonly IBookmarkingService _bookmarkingService;
-    private static readonly ILogger _logger = Log.ForContext<BookmarkSyncService>();
     public BookmarkSyncService(IHostApplicationLifetime host, IConfigManager configManager)
     {
         _bookmarkingService = BookmarkingService.GetBookmarkingService(configManager);
@@ -27,7 +28,7 @@ public class BookmarkSyncService : IHostedService
         {
             _logger.Information("Processing {Instance}", instance);
             _logger.Debug("Setting up Mastodon API client");
-            var client = new Mastodon.ApiClient(instance);
+            var client = new ApiClient(instance);
             // Get bookmarks from mastodon account
             List<Bookmark>? bookmarks = null;
             try
