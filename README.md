@@ -11,9 +11,13 @@ mastodon-bookmark-sync supports multiple fediverse accounts.
 
 **Supported bookmarking services:**
 
-- LinkAce
-- linkding
-- Pinboard
+- [LinkAce]
+- [linkding]
+- [Pinboard]
+
+[LinkAce]:https://linkace.org/
+[linkding]:https://github.com/sissbruecker/linkding
+[Pinboard]:https://pinboard.in/
 
 ## getting started
 
