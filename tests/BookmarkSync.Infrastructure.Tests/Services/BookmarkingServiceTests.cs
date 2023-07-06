@@ -1,3 +1,5 @@
+using BookmarkSync.Infrastructure.Services.Bookmarking.Linkding;
+
 namespace BookmarkSync.Infrastructure.Tests.Services;
 
 [TestClass]
@@ -53,6 +55,35 @@ public class BookmarkingServiceTests
         // Assert
         Assert.AreEqual(typeof(LinkAceBookmarkingService), obj.GetType());
         Assert.IsInstanceOfType(obj, typeof(LinkAceBookmarkingService));
+    }
+    [TestMethod]
+    public void GetBookmarkingService_Linkding()
+    {
+        // Arrange
+        var config = new Dictionary<string, string?>
+        {
+            {
+                "App:Bookmarking:Service", "linkding"
+            },
+            {
+                "App:Bookmarking:ApiToken", "3781368521fd4fae365dac100f28dbce533a4f9a"
+            },
+            {
+                "App:Bookmarking:LinkdingUri", "https://your-linkace-url.com"
+            }
+        };
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(config)
+            .Build();
+
+        IConfigManager configManager = new ConfigManager(configuration);
+
+        // Act
+        var obj = BookmarkingService.GetBookmarkingService(configManager);
+
+        // Assert
+        Assert.AreEqual(typeof(LinkdingBookmarkingService), obj.GetType());
+        Assert.IsInstanceOfType(obj, typeof(LinkdingBookmarkingService));
     }
     [TestMethod]
     public void GetBookmarkingService_Pinboard()

@@ -2,6 +2,7 @@ using System.Net.Http.Headers;
 using System.Net.Mime;
 using BookmarkSync.Core;
 using BookmarkSync.Infrastructure.Services.Bookmarking.LinkAce;
+using BookmarkSync.Infrastructure.Services.Bookmarking.Linkding;
 using BookmarkSync.Infrastructure.Services.Bookmarking.Pinboard;
 
 namespace BookmarkSync.Infrastructure.Services.Bookmarking;
@@ -32,6 +33,7 @@ public abstract class BookmarkingService
         {
             "LinkAce" => new LinkAceBookmarkingService(configManager),
             "Pinboard" => new PinboardBookmarkingService(configManager),
+            "linkding" => new LinkdingBookmarkingService(configManager),
             _ => throw new InvalidOperationException("Bookmark service either not provided or unknown")
         };
     }
