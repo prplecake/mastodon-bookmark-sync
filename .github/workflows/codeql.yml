@@ -67,6 +67,7 @@ jobs:
     - name: Build
       run: |
         dotnet nuget add source --username prplecake --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name github "https://nuget.pkg.github.com/CompostInTraining/index.json"
+        dotnet nuget add source --username prplecake --password ${{ secrets.GITHUB_TOKEN }} --store-password-in-clear-text --name prplecake "https://nuget.pkg.github.com/prplecake/index.json"
         dotnet build
 
 

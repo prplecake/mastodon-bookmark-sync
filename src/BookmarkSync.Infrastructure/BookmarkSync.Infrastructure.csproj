@@ -12,6 +12,8 @@
 
     <ItemGroup>
       <PackageReference Include="cit.common" Version="0.0.1" />
+      <PackageReference Include="LinkAce" Version="0.0.4" />
+      <PackageReference Include="LinkAce.Api" Version="0.0.3" />
       <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="7.0.0" />
       <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
       <PackageReference Include="Serilog" Version="3.0.1" />
