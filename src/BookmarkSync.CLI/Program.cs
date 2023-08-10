@@ -34,7 +34,7 @@ public static class Program
         finally
         {
             Log.Information("Stopping host");
-            configManager.SaveToFile();
+            // configManager.SaveToFile();
             Log.CloseAndFlush();
         }
     }
