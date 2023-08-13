@@ -1,4 +1,5 @@
 using BookmarkSync.Core.Entities.Config;
+using BookmarkSync.Core.Extensions;
 using BookmarkSync.Infrastructure.Services.Mastodon;
 using Microsoft.Extensions.Hosting;
 
@@ -9,14 +10,16 @@ public class BookmarkSyncService : IHostedService
     private static readonly ILogger _logger = Log.ForContext<BookmarkSyncService>();
     private readonly IBookmarkingService _bookmarkingService;
     private readonly IHostApplicationLifetime _host;
+    private readonly List<string> _ignoredAccounts;
     private readonly List<Instance>? _instances;
     public BookmarkSyncService(IHostApplicationLifetime host, IConfigManager configManager)
     {
         _bookmarkingService = BookmarkingService.GetBookmarkingService(configManager);
         _host = host;
         _instances = configManager.Instances;
+        _ignoredAccounts = configManager.App.IgnoredAccounts;
     }
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public async Task StartAsync(CancellationToken stoppingToken)
     {
         if (_instances == null || _instances.Count == 0)
@@ -47,6 +50,10 @@ public class BookmarkSyncService : IHostedService
                 _logger.Information("No bookmarks received");
                 continue;
             }
+
+            // Remove any bookmarks from accounts in the IgnoredAccounts list
+            bookmarks.RemoveAllFromIgnoredAccounts(_ignoredAccounts);
+
             foreach (var bookmark in bookmarks)
             {
                 // Save bookmarks to bookmarking service
@@ -72,6 +79,6 @@ public class BookmarkSyncService : IHostedService
         // Finish task
         _host.StopApplication();
     }
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public Task StopAsync(CancellationToken cancellationToken) => Task.CompletedTask;
 }

@@ -1,5 +1,6 @@
 using System.Configuration;
 using BookmarkSync.Core.Entities.Config;
+using BookmarkSync.Core.Extensions;
 using Microsoft.Extensions.Configuration;
 
 namespace BookmarkSync.Core.Configuration;
@@ -20,6 +21,8 @@ public class ConfigManager : IConfigManager
         Configuration = configuration;
         App = Configuration.GetSection("App").Get<App>() ?? throw new InvalidOperationException();
         Instances = Configuration.GetSection("Instances").Get<List<Instance>>();
+
+        if (App.IgnoredAccounts is not null) CleanUpIgnoredAccounts();
 
         if (!App.IsValid())
         {
@@ -45,5 +48,9 @@ public class ConfigManager : IConfigManager
     {
         Console.WriteLine(Directory.GetCurrentDirectory());
         throw new NotImplementedException();
+    }
+    private void CleanUpIgnoredAccounts()
+    {
+        App.IgnoredAccounts = (from account in App.IgnoredAccounts select account.RemoveLeadingAt()).ToList();
     }
 }

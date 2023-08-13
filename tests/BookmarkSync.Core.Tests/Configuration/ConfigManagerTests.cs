@@ -1,5 +1,7 @@
 using System.Configuration;
+using System.Text;
 using BookmarkSync.Core.Configuration;
+using BookmarkSync.Core.Extensions;
 using Microsoft.Extensions.Configuration;
 
 namespace BookmarkSync.Core.Tests.Configuration;
@@ -38,6 +40,18 @@ public class ConfigManagerTests
         Assert.IsTrue(_configManager?.HasMethod("GetConfigValue"));
     }
     [TestMethod]
+    [ExpectedException(typeof(ConfigurationErrorsException))]
+    public void GetConfigValue_InvalidKey()
+    {
+        // Arrange
+        var expected = "Pinner";
+
+        // Act
+        string? actual = _configManager?.GetConfigValue("Apps:Bookmarking:Service");
+
+        // Assert - Exception
+    }
+    [TestMethod]
     public void GetConfigValue_Success()
     {
         // Arrange
@@ -50,15 +64,34 @@ public class ConfigManagerTests
         Assert.AreEqual(expected, actual);
     }
     [TestMethod]
-    [ExpectedException(typeof(ConfigurationErrorsException))]
-    public void GetConfigValue_InvalidKey()
+    public void TestConfigManagerWithIgnoredAccountsConfigured()
     {
-        // Arrange
-        var expected = "Pinner";
+        var jsonString = @"
+{
+    ""App"": {
+        ""Bookmarking"": {
+            ""Service"": ""LinkAce""
+        },
+        ""IgnoredAccounts"": [
+            ""@prplecake@social.example.com"",
+            ""flipper@social.example.com""
+        ],
+    },
+    ""Instances"": [
+        ""https://compostintraining.club""
+    ]
+}";
+        var config = new ConfigurationBuilder()
+            .AddJsonStream(new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+            .Build();
 
-        // Act
-        string? actual = _configManager?.GetConfigValue("Apps:Bookmarking:Service");
+        var configManager = new ConfigManager(config);
 
-        // Assert - Exception
+        // Assert
+        Assert.IsNotNull(configManager.App.IgnoredAccounts);
+        foreach (string? account in configManager.App.IgnoredAccounts)
+        {
+            Assert.IsFalse(account.HasLeadingAt());
+        }
     }
 }
