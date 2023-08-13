@@ -12,17 +12,21 @@ public class ConfigManagerTests
     [TestInitialize]
     public void Init()
     {
-        var inMemoryConfig = new Dictionary<string, string?>
+        var jsonString = @"
+{
+    ""App"": {
+        ""Bookmarking"": {
+            ""Service"": ""Pinboard""
+        }
+    },
+    ""Instances"": [
         {
-            {
-                "App:Bookmarking:Service", "Pinboard"
-            },
-            {
-                "Instances:0:Uri", "https://compostintraining.club"
-            }
-        };
+            ""Uri"": ""https://compostintraining.club""
+        }
+    ]
+}";
         _config = new ConfigurationBuilder()
-            .AddInMemoryCollection(inMemoryConfig)
+            .AddJsonStream(new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
             .Build();
 
         _configManager = new ConfigManager(_config);
@@ -78,7 +82,9 @@ public class ConfigManagerTests
         ],
     },
     ""Instances"": [
-        ""https://compostintraining.club""
+        {
+            ""Uri"": ""https://compostintraining.club""
+        }
     ]
 }";
         var config = new ConfigurationBuilder()
