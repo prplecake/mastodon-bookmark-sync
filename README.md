@@ -5,9 +5,9 @@
 # mastodon-bookmark-sync
 
 mastodon-bookmark-sync is a command-line utility to synchronize Mastodon
-bookmarks with Pinboard.
+bookmarks with LinkAce or other bookmarking services.
 
-mastodon-bookmark-sync supports multiple fediverse accounts.
+mastodon-bookmark-sync supports multiple Mastodon accounts.
 
 **Supported bookmarking services:**
 
@@ -37,11 +37,10 @@ vim appsettings.Production.json # don't forget to edit it!
 You'll need an access token from your Mastodon server.
 i.e. `your.instance/settings/applications`
 
-[fediverse-access-token]:https://tools.splat.soy/fediverse-access-token/
-
 And you'll need an API token for your bookmarking service of choice.
 
-See the wiki for [LinkAce][linkace-config] or [Pinboard][pinboard-config] configuration details.
+See the wiki for [LinkAce][linkace-config] or [Pinboard][pinboard-config] 
+configuration details.
 
 [linkace-config]:https://github.com/prplecake/mastodon-bookmark-sync/wiki/LinkAce
 [pinboard-config]:https://github.com/prplecake/mastodon-bookmark-sync/wiki/Pinboard
