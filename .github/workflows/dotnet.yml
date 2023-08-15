@@ -45,3 +45,4 @@ jobs:
           name: .NET Test Results
           path: TestResults/*.trx
           reporter: dotnet-trx
+      - run: dotnet run --project src/BookmarkSync.CLI/BookmarkSync.CLI.csproj -- version

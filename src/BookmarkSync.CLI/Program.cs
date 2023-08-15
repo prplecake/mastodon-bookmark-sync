@@ -1,4 +1,5 @@
-﻿using BookmarkSync.Core.Configuration;
+﻿using BookmarkSync.Core;
+using BookmarkSync.Core.Configuration;
 using BookmarkSync.Infrastructure.Services.Bookmarking;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -12,6 +13,11 @@ public static class Program
     private static IConfiguration? _configuration;
     public static int Main(string[] args)
     {
+        if (args.Contains("version"))
+        {
+            Console.WriteLine("{0} {1}", Meta.Name, Meta.Version);
+            return 0;
+        }
         _configuration = SetupConfiguration(args);
         IConfigManager configManager = new ConfigManager(_configuration);
         
@@ -23,6 +29,7 @@ public static class Program
         try
         {
             Log.Information("Starting host");
+            Log.Information("{Name} {Version}", Meta.Name, Meta.Version);
             BuildHost(configManager).Run();
             return 0;
         }
