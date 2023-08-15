@@ -13,6 +13,11 @@ public static class Program
     private static IConfiguration? _configuration;
     public static int Main(string[] args)
     {
+        if (args.Contains("version"))
+        {
+            Console.WriteLine("{0} {1}", Meta.Name, Meta.Version);
+            return 0;
+        }
         _configuration = SetupConfiguration(args);
         IConfigManager configManager = new ConfigManager(_configuration);
         
