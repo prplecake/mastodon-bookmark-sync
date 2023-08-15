@@ -28,10 +28,8 @@ jobs:
           dotnet restore
       - name: Build
         run: dotnet build --no-restore
-
       - name: Test
         run: dotnet test --no-build --verbosity normal --logger "trx" --results-directory "./TestResults"
-
       - uses: dorny/test-reporter@v1
         if: always()
         with:
@@ -48,7 +46,6 @@ jobs:
           linux-x64, linux-arm64,
           win-x64, osx-x64, 
         ]
-    
     runs-on: ubuntu-latest
     name: publish-${{matrix.rid}}
     needs: build
