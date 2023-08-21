@@ -11,10 +11,12 @@ mastodon-bookmark-sync supports multiple Mastodon accounts.
 
 **Supported bookmarking services:**
 
+- [Briefkasten]
 - [LinkAce]
 - [linkding]
 - [Pinboard]
 
+[Briefkasten]:https://github.com/ndom91/briefkasten
 [LinkAce]:https://linkace.org/
 [linkding]:https://github.com/sissbruecker/linkding
 [Pinboard]:https://pinboard.in/
