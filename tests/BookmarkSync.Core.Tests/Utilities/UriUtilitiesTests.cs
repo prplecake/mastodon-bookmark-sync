@@ -29,4 +29,13 @@ public class UriUtilitiesTests
         string actual = uri.RemoveProto();
         Assert.AreEqual("example.com", actual);
     }
+    [TestMethod]
+    [ExpectedException(typeof(ArgumentException))]
+    public void UrlUtilities_RemoveProto_EmptyString()
+    {
+        // Act
+        string.Empty.RemoveProto();
+
+        // Assert - Exception: ArgumentException
+    }
 }
