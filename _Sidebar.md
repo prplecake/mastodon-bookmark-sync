@@ -1,8 +1,6 @@
-[[Home]]
-
-Configuration
-* [[Briefkasten]]
-* [[LinkAce]]
-* [[Pinboard]]
-
-[[Questions]]
+* [[Home]]
+* Configuration
+  * [[Briefkasten]]
+  * [[LinkAce]]
+  * [[Pinboard]]
+* [[Questions]]
