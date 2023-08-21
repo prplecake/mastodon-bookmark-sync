@@ -41,11 +41,9 @@ i.e. `your.instance/settings/applications`
 
 And you'll need an API token for your bookmarking service of choice.
 
-See the wiki for [LinkAce][linkace-config] or [Pinboard][pinboard-config] 
-configuration details.
+See the wiki for [configuration examples][config-examples].
 
-[linkace-config]:https://github.com/prplecake/mastodon-bookmark-sync/wiki/LinkAce
-[pinboard-config]:https://github.com/prplecake/mastodon-bookmark-sync/wiki/Pinboard
+[config-examples]:https://github.com/prplecake/mastodon-bookmark-sync/wiki/Configuration-Examples
 
 Once you've got it configured, just run it. You might want to add it to your
 crontab, or your other favorite task scheduler:
