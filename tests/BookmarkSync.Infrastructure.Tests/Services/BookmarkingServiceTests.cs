@@ -1,5 +1,3 @@
-using BookmarkSync.Infrastructure.Services.Bookmarking.Linkding;
-
 namespace BookmarkSync.Infrastructure.Tests.Services;
 
 [TestClass]
