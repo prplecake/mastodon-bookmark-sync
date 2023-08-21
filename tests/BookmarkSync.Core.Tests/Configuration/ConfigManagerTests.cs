@@ -2,6 +2,7 @@ using System.Configuration;
 using System.Text;
 using BookmarkSync.Core.Configuration;
 using BookmarkSync.Core.Extensions;
+using CiT.Common.Exceptions;
 using Microsoft.Extensions.Configuration;
 
 namespace BookmarkSync.Core.Tests.Configuration;
@@ -99,5 +100,40 @@ public class ConfigManagerTests
         {
             Assert.IsFalse(account.HasLeadingAt());
         }
+    }
+    [TestMethod]
+    [ExpectedException(typeof(InvalidConfigurationException))]
+    public void Test_ConfigManager_With_Invalid_Config()
+    {
+        var jsonString = @"
+{
+    ""App"": {
+        ""IgnoredAccounts"": [
+            ""@prplecake@social.example.com"",
+            ""flipper@social.example.com""
+        ],
+    },
+    ""Instances"": [
+        {
+            ""Uri"": ""https://compostintraining.club""
+        }
+    ]
+}";
+        var config = new ConfigurationBuilder()
+            .AddJsonStream(new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+            .Build();
+
+        var configManager = new ConfigManager(config);
+
+        // Assert - Exception: InvalidConfigurationException
+    }
+    [TestMethod]
+    [ExpectedException(typeof(NotImplementedException))]
+    public void ConfigManager_SaveToFile_Throws_NotImplementedException()
+    {
+        // Act
+        _configManager?.SaveToFile();
+
+        // Assert - Exception: NotImplementedException
     }
 }
