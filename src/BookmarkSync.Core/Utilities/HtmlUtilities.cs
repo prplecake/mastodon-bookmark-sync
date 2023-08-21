@@ -63,8 +63,6 @@ public static class HtmlUtilities
                     ConvertContentTo(node, outText);
                 }
                 break;
-            default:
-                throw new ArgumentOutOfRangeException();
         }
     }
     private static void ConvertContentTo(HtmlNode node, TextWriter outText)
