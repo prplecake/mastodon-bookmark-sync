@@ -26,6 +26,35 @@ public class BookmarkingServiceTests
         // Assert - Exception
     }
     [TestMethod]
+    public void GetBookmarkingService_Briefkasten()
+    {
+        // Arrange
+        var config = new Dictionary<string, string?>
+        {
+            {
+                "App:Bookmarking:Service", "Briefkasten"
+            },
+            {
+                "App:Bookmarking:ApiToken", "ABC123DEF456"
+            },
+            {
+                "App:Bookmarking:BriefkastenUri", "https://briefkastenhq.com"
+            }
+        };
+        var configuration = new ConfigurationBuilder()
+            .AddInMemoryCollection(config)
+            .Build();
+
+        IConfigManager configManager = new ConfigManager(configuration);
+
+        // Act
+        var obj = BookmarkingService.GetBookmarkingService(configManager);
+
+        // Assert
+        Assert.AreEqual(typeof(BriefkastenBookmarkingService), obj.GetType());
+        Assert.IsInstanceOfType(obj, typeof(BriefkastenBookmarkingService));
+    }
+    [TestMethod]
     public void GetBookmarkingService_LinkAce()
     {
         // Arrange
