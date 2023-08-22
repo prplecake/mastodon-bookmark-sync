@@ -19,9 +19,10 @@ public class BookmarkingServiceTests
             .Build();
 
         IConfigManager configManager = new ConfigManager(configuration);
+        HttpClient httpClient = new();
 
         // Act
-        var unused = BookmarkingService.GetBookmarkingService(configManager);
+        var unused = BookmarkingService.GetBookmarkingService(configManager, httpClient);
 
         // Assert - Exception
     }
@@ -46,9 +47,10 @@ public class BookmarkingServiceTests
             .Build();
 
         IConfigManager configManager = new ConfigManager(configuration);
+        HttpClient httpClient = new();
 
         // Act
-        var obj = BookmarkingService.GetBookmarkingService(configManager);
+        var obj = BookmarkingService.GetBookmarkingService(configManager, httpClient);
 
         // Assert
         Assert.AreEqual(typeof(BriefkastenBookmarkingService), obj.GetType());
@@ -75,9 +77,10 @@ public class BookmarkingServiceTests
             .Build();
 
         IConfigManager configManager = new ConfigManager(configuration);
+        HttpClient httpClient = new();
 
         // Act
-        var obj = BookmarkingService.GetBookmarkingService(configManager);
+        var obj = BookmarkingService.GetBookmarkingService(configManager, httpClient);
 
         // Assert
         Assert.AreEqual(typeof(LinkAceBookmarkingService), obj.GetType());
@@ -104,9 +107,10 @@ public class BookmarkingServiceTests
             .Build();
 
         IConfigManager configManager = new ConfigManager(configuration);
+        HttpClient httpClient = new();
 
         // Act
-        var obj = BookmarkingService.GetBookmarkingService(configManager);
+        var obj = BookmarkingService.GetBookmarkingService(configManager, httpClient);
 
         // Assert
         Assert.AreEqual(typeof(LinkdingBookmarkingService), obj.GetType());
@@ -130,9 +134,10 @@ public class BookmarkingServiceTests
             .Build();
 
         IConfigManager configManager = new ConfigManager(configuration);
+        HttpClient httpClient = new();
 
         // Act
-        var obj = BookmarkingService.GetBookmarkingService(configManager);
+        var obj = BookmarkingService.GetBookmarkingService(configManager, httpClient);
 
         // Assert
         Assert.AreEqual(typeof(PinboardBookmarkingService), obj.GetType());

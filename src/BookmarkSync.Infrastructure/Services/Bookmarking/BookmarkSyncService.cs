@@ -13,9 +13,9 @@ public class BookmarkSyncService : IHostedService
     private readonly List<string> _ignoredAccounts;
     private readonly List<Instance>? _instances;
     private readonly MastodonService _mastodonService;
-    public BookmarkSyncService(IHostApplicationLifetime host, IConfigManager configManager, MastodonService mastodonService)
+    public BookmarkSyncService(IHostApplicationLifetime host, IConfigManager configManager, HttpClient client, MastodonService mastodonService)
     {
-        _bookmarkingService = BookmarkingService.GetBookmarkingService(configManager);
+        _bookmarkingService = BookmarkingService.GetBookmarkingService(configManager, client);
         _host = host;
         _instances = configManager.Instances;
         _ignoredAccounts = configManager.App.IgnoredAccounts;

@@ -6,7 +6,7 @@ public class PinboardBookmarkingService : BookmarkingService, IBookmarkingServic
 {
     private const int PinboardDescriptionMaxLength = 255;
     private static readonly ILogger _logger = Log.ForContext<PinboardBookmarkingService>();
-    public PinboardBookmarkingService(IConfigManager configManager)
+    public PinboardBookmarkingService(IConfigManager configManager, HttpClient client) : base(client)
     {
         ApiToken = configManager.App.Bookmarking.ApiToken ?? throw new InvalidOperationException();
         ApiUri = "https://api.pinboard.in/v1/posts/add";

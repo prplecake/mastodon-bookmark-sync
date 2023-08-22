@@ -1,4 +1,3 @@
-using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
 using Newtonsoft.Json;
@@ -8,14 +7,14 @@ namespace BookmarkSync.Infrastructure.Services.Bookmarking.Briefkasten;
 public class BriefkastenBookmarkingService : BookmarkingService, IBookmarkingService
 {
     private static readonly ILogger _logger = Log.ForContext<BriefkastenBookmarkingService>();
-    public BriefkastenBookmarkingService(IConfigManager configManager)
+    public BriefkastenBookmarkingService(IConfigManager configManager, HttpClient client) : base(client)
     {
         ApiToken = configManager.App.Bookmarking.ApiToken ?? throw new InvalidOperationException("Missing API token");
         string briefkastenUri = configManager.GetConfigValue("App:Bookmarking:BriefkastenUri") ??
-                            throw new InvalidOperationException("Missing Briefkasten Uri");
+                                throw new InvalidOperationException("Missing Briefkasten Uri");
         ApiUri = $"{briefkastenUri}/api/bookmarks";
     }
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public async Task<HttpResponseMessage> Save(Bookmark bookmark)
     {
         // Prep payload

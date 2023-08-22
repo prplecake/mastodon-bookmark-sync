@@ -11,7 +11,7 @@ public class LinkAceBookmarkingService : BookmarkingService, IBookmarkingService
 {
     private static readonly ILogger _logger = Log.ForContext<LinkAceBookmarkingService>();
     private readonly string _linkAceUri;
-    public LinkAceBookmarkingService(IConfigManager configManager)
+    public LinkAceBookmarkingService(IConfigManager configManager, HttpClient client) : base(client)
     {
         ApiToken = configManager.App.Bookmarking.ApiToken ?? throw new InvalidOperationException("Missing API token");
         _linkAceUri = configManager.GetConfigValue("App:Bookmarking:LinkAceUri") ??
