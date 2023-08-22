@@ -29,13 +29,17 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-build --verbosity normal --logger "trx" --results-directory "./TestResults"
+        run: dotnet test --no-build --verbosity normal --logger "trx" --results-directory "./TestResults" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
       - uses: dorny/test-reporter@v1
         if: always()
         with:
           name: .NET Test Results
           path: TestResults/*.trx
           reporter: dotnet-trx
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
       - run: dotnet run --project src/BookmarkSync.CLI/BookmarkSync.CLI.csproj -- version
   
   
