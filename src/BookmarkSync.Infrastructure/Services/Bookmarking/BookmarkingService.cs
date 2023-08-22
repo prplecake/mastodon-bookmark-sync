@@ -13,12 +13,13 @@ public abstract class BookmarkingService
     /// <summary>
     /// The HttpClient object.
     /// </summary>
-    protected static readonly HttpClient Client = new();
-    protected BookmarkingService()
+    protected static HttpClient Client = new();
+    protected BookmarkingService(HttpClient client)
     {
         // Setup HttpClient
-        Client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
-        Client.DefaultRequestHeaders.UserAgent.Add(Meta.UserAgent);
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
+        client.DefaultRequestHeaders.UserAgent.Add(Meta.UserAgent);
+        Client = client;
     }
     /// <summary>
     /// The API auth token..
@@ -28,14 +29,14 @@ public abstract class BookmarkingService
     /// The Api URL.
     /// </summary>
     protected string ApiUri { get; init; } = null!;
-    public static IBookmarkingService GetBookmarkingService(IConfigManager configManager)
+    public static IBookmarkingService GetBookmarkingService(IConfigManager configManager, HttpClient client)
     {
         return configManager.App.Bookmarking.Service switch
         {
-            "Briefkasten" => new BriefkastenBookmarkingService(configManager),
-            "LinkAce" => new LinkAceBookmarkingService(configManager),
-            "Pinboard" => new PinboardBookmarkingService(configManager),
-            "linkding" => new LinkdingBookmarkingService(configManager),
+            "Briefkasten" => new BriefkastenBookmarkingService(configManager, client),
+            "LinkAce" => new LinkAceBookmarkingService(configManager, client),
+            "Pinboard" => new PinboardBookmarkingService(configManager, client),
+            "linkding" => new LinkdingBookmarkingService(configManager, client),
             _ => throw new InvalidOperationException("Bookmark service either not provided or unknown")
         };
     }

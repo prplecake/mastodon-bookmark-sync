@@ -8,7 +8,7 @@ namespace BookmarkSync.Infrastructure.Services.Bookmarking.Briefkasten;
 public class BriefkastenBookmarkingService : BookmarkingService, IBookmarkingService
 {
     private static readonly ILogger _logger = Log.ForContext<BriefkastenBookmarkingService>();
-    public BriefkastenBookmarkingService(IConfigManager configManager)
+    public BriefkastenBookmarkingService(IConfigManager configManager, HttpClient client) : base(client)
     {
         ApiToken = configManager.App.Bookmarking.ApiToken ?? throw new InvalidOperationException("Missing API token");
         string briefkastenUri = configManager.GetConfigValue("App:Bookmarking:BriefkastenUri") ??

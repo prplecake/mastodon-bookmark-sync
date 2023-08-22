@@ -8,7 +8,7 @@ namespace BookmarkSync.Infrastructure.Services.Bookmarking.Linkding;
 public class LinkdingBookmarkingService : BookmarkingService, IBookmarkingService
 {
     private static readonly ILogger _logger = Log.ForContext<LinkdingBookmarkingService>();
-    public LinkdingBookmarkingService(IConfigManager configManager)
+    public LinkdingBookmarkingService(IConfigManager configManager, HttpClient client) : base(client)
     {
         ApiToken = configManager.App.Bookmarking.ApiToken ?? throw new InvalidOperationException("Missing API token");
         string linkdingUri = configManager.GetConfigValue("App:Bookmarking:LinkdingUri") ??
