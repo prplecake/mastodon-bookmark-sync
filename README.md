@@ -1,5 +1,6 @@
 [![Dotnet](https://github.com/prplecake/mastodon-bookmark-sync/actions/workflows/dotnet.yml/badge.svg)](https://github.com/prplecake/mastodon-bookmark-sync/actions/workflows/dotnet.yml)
 [![Dotnet Release](https://github.com/prplecake/mastodon-bookmark-sync/actions/workflows/dotnet-release.yml/badge.svg)](https://github.com/prplecake/mastodon-bookmark-sync/actions/workflows/dotnet-release.yml)
+[![codecov](https://codecov.io/gh/prplecake/mastodon-bookmark-sync/graph/badge.svg?token=GBz8QvtznT)](https://codecov.io/gh/prplecake/mastodon-bookmark-sync)
 [![GitHub release (latest SemVer including pre-releases)](https://img.shields.io/github/v/release/prplecake/mastodon-bookmark-sync?include_prereleases)](https://github.com/prplecake/mastodon-bookmark-sync/releases/latest)
 
 # mastodon-bookmark-sync
