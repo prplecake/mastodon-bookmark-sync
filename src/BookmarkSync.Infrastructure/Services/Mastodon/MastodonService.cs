@@ -7,16 +7,20 @@ using Newtonsoft.Json;
 
 namespace BookmarkSync.Infrastructure.Services.Mastodon;
 
-public class ApiClient
+public class MastodonService
 {
-    private static readonly ILogger _logger = Log.ForContext<ApiClient>();
-    private readonly HttpClient _client = new();
-    private readonly Instance _instance;
-    public ApiClient(Instance instance)
+    private static readonly ILogger _logger = Log.ForContext<MastodonService>();
+    private readonly HttpClient _client;
+    private Instance _instance;
+    public MastodonService(HttpClient client)
+    {
+        client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
+        client.DefaultRequestHeaders.UserAgent.Add(Meta.UserAgent);
+        _client = client;
+    }
+    public void SetInstance(Instance instance)
     {
         _instance = instance;
-        _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue(MediaTypeNames.Application.Json));
-        _client.DefaultRequestHeaders.UserAgent.Add(Meta.UserAgent);
         _client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", _instance.AccessToken);
     }
     public async Task DeleteBookmark(Bookmark bookmark)

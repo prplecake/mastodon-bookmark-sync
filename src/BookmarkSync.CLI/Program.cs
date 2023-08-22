@@ -1,6 +1,7 @@
 ﻿using BookmarkSync.Core;
 using BookmarkSync.Core.Configuration;
 using BookmarkSync.Infrastructure.Services.Bookmarking;
+using BookmarkSync.Infrastructure.Services.Mastodon;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -50,8 +51,8 @@ public static class Program
             .ConfigureServices(services =>
             {
                 services.AddSingleton(configManager);
-
                 services.AddHostedService<BookmarkSyncService>();
+                services.AddHttpClient<MastodonService>();
             })
             .UseSerilog()
             .Build();
