@@ -12,12 +12,14 @@ public class BookmarkSyncService : IHostedService
     private readonly IHostApplicationLifetime _host;
     private readonly List<string> _ignoredAccounts;
     private readonly List<Instance>? _instances;
-    public BookmarkSyncService(IHostApplicationLifetime host, IConfigManager configManager)
+    private readonly MastodonService _mastodonService;
+    public BookmarkSyncService(IHostApplicationLifetime host, IConfigManager configManager, MastodonService mastodonService)
     {
         _bookmarkingService = BookmarkingService.GetBookmarkingService(configManager);
         _host = host;
         _instances = configManager.Instances;
         _ignoredAccounts = configManager.App.IgnoredAccounts;
+        _mastodonService = mastodonService;
     }
     /// <inheritdoc/>
     public async Task StartAsync(CancellationToken stoppingToken)
@@ -31,12 +33,12 @@ public class BookmarkSyncService : IHostedService
         {
             _logger.Information("Processing {Instance}", instance);
             _logger.Debug("Setting up Mastodon API client");
-            var client = new ApiClient(instance);
+            _mastodonService.SetInstance(instance);
             // Get bookmarks from mastodon account
             List<Bookmark>? bookmarks = null;
             try
             {
-                bookmarks = (await client.GetBookmarks())?
+                bookmarks = (await _mastodonService.GetBookmarks())?
                     .Where(b => b.Visibility is not ("private" or "direct"))
                     .ToList();
             }
@@ -71,7 +73,7 @@ public class BookmarkSyncService : IHostedService
                 if (instance.DeleteBookmarks && result.IsSuccessStatusCode)
                 {
                     _logger.Information("Deleting bookmark");
-                    await client.DeleteBookmark(bookmark);
+                    await _mastodonService.DeleteBookmark(bookmark);
                 }
             }
         }
