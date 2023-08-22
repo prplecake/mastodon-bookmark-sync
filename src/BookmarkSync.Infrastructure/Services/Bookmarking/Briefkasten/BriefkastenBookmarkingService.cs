@@ -1,4 +1,3 @@
-using System.Net.Http.Headers;
 using System.Net.Mime;
 using System.Text;
 using Newtonsoft.Json;
@@ -12,10 +11,10 @@ public class BriefkastenBookmarkingService : BookmarkingService, IBookmarkingSer
     {
         ApiToken = configManager.App.Bookmarking.ApiToken ?? throw new InvalidOperationException("Missing API token");
         string briefkastenUri = configManager.GetConfigValue("App:Bookmarking:BriefkastenUri") ??
-                            throw new InvalidOperationException("Missing Briefkasten Uri");
+                                throw new InvalidOperationException("Missing Briefkasten Uri");
         ApiUri = $"{briefkastenUri}/api/bookmarks";
     }
-    /// <inheritdoc />
+    /// <inheritdoc/>
     public async Task<HttpResponseMessage> Save(Bookmark bookmark)
     {
         // Prep payload
