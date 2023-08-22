@@ -38,7 +38,7 @@ jobs:
       - name: Build
         run: dotnet build --no-restore
       - name: Test
-        run: dotnet test --no-build --verbosity normal --logger "trx" --results-directory "./TestResults"
+        run: dotnet test --no-build --verbosity normal --logger "trx" --results-directory "./TestResults" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover
       - uses: dorny/test-reporter@v1
         if: always()
         with:
