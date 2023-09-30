@@ -22,6 +22,7 @@
       <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="7.0.0" />
       <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.1" />
       <PackageReference Include="Microsoft.Extensions.Http" Version="7.0.0" />
+      <PackageReference Include="NetEscapades.Configuration.Yaml" Version="3.1.0" />
       <PackageReference Include="Serilog.Extensions.Hosting" Version="7.0.0" />
       <PackageReference Include="Serilog.Settings.Configuration" Version="7.0.1" />
       <PackageReference Include="Serilog.Sinks.Console" Version="4.1.0" />
@@ -33,16 +34,10 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Update="appsettings.json">
+      <None Update="config.yaml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
-      <None Update="appsettings.Example.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
-
-    <ItemGroup>
-      <None Include="appsettings.Development.json" Condition="Exists('appsettings.Development.json')">
+      <None Update="config.Development.yaml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
     </ItemGroup>

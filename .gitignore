@@ -5,7 +5,9 @@
 
 # Secrets
 appsettings.*.json
+config.*.yaml
 !appsettings.Example.json
+!config.Example.yaml
 
 # User-specific files
 *.rsuser

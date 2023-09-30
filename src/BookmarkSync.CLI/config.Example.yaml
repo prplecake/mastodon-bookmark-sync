@@ -1,0 +1,12 @@
+Instances:
+  - Uri: https://compostintraining.club
+    AccessToken:
+    DeleteBookmarks: true
+App:
+  Bookmarking:
+    Service: "LinkAce"
+    ApiToken:
+    LinkAceUri:
+  IgnoredAccounts:
+    - one
+    - two
