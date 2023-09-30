@@ -57,9 +57,8 @@ public static class Program
             .UseSerilog()
             .Build();
     private static IConfiguration SetupConfiguration(string[] args) => new ConfigurationBuilder()
-        .AddJsonFile("appsettings.json", false, true)
-        .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("MBS_ENVIRONMENT") ?? "Production"}.json", false, true)
-        .AddEnvironmentVariables()
+        .AddYamlFile("config.yaml", false, true)
+        .AddYamlFile($"config.{Environment.GetEnvironmentVariable("MBS_ENVIRONMENT") ?? "Production"}.yaml", false, true)
         .AddCommandLine(args)
         .Build();
 }

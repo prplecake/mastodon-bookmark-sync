@@ -13,21 +13,15 @@ public class ConfigManagerTests
     [TestInitialize]
     public void Init()
     {
-        var jsonString = @"
-{
-    ""App"": {
-        ""Bookmarking"": {
-            ""Service"": ""Pinboard""
-        }
-    },
-    ""Instances"": [
-        {
-            ""Uri"": ""https://compostintraining.club""
-        }
-    ]
-}";
+        var yamlString = @"
+App:
+  Bookmarking:
+    Service: Pinboard
+Instances:
+  - Uri: https://compostintraining.club
+";
         _config = new ConfigurationBuilder()
-            .AddJsonStream(new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+            .AddYamlStream(new MemoryStream(Encoding.UTF8.GetBytes(yamlString)))
             .Build();
 
         _configManager = new ConfigManager(_config);
@@ -71,25 +65,18 @@ public class ConfigManagerTests
     [TestMethod]
     public void TestConfigManagerWithIgnoredAccountsConfigured()
     {
-        var jsonString = @"
-{
-    ""App"": {
-        ""Bookmarking"": {
-            ""Service"": ""LinkAce""
-        },
-        ""IgnoredAccounts"": [
-            ""@prplecake@social.example.com"",
-            ""flipper@social.example.com""
-        ],
-    },
-    ""Instances"": [
-        {
-            ""Uri"": ""https://compostintraining.club""
-        }
-    ]
-}";
+        var yamlString = @"
+App:
+  Bookmarking:
+    Service: LinkAce
+  IgnoredAccounts:
+    - ""@prplecake@social.example.com""
+    - flipper@social.example.com
+Instances: 
+  - Uri: https://compostintraining.club
+";
         var config = new ConfigurationBuilder()
-            .AddJsonStream(new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+            .AddYamlStream(new MemoryStream(Encoding.UTF8.GetBytes(yamlString)))
             .Build();
 
         var configManager = new ConfigManager(config);
@@ -105,22 +92,16 @@ public class ConfigManagerTests
     [ExpectedException(typeof(InvalidConfigurationException))]
     public void Test_ConfigManager_With_Invalid_Config()
     {
-        var jsonString = @"
-{
-    ""App"": {
-        ""IgnoredAccounts"": [
-            ""@prplecake@social.example.com"",
-            ""flipper@social.example.com""
-        ],
-    },
-    ""Instances"": [
-        {
-            ""Uri"": ""https://compostintraining.club""
-        }
-    ]
-}";
+        var yamlString = @"
+App:
+  IgnoredAccounts:
+    - ""@prplecake@social.example.com""
+    - flipper@social.example.com
+Instances:
+  - Uri: https://compostintraining.club
+";
         var config = new ConfigurationBuilder()
-            .AddJsonStream(new MemoryStream(Encoding.UTF8.GetBytes(jsonString)))
+            .AddYamlStream(new MemoryStream(Encoding.UTF8.GetBytes(yamlString)))
             .Build();
 
         var configManager = new ConfigManager(config);
