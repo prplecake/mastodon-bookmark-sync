@@ -4,8 +4,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
 		.gitignore = .gitignore
-		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
-		.github\workflows\dotnet-release.yml = .github\workflows\dotnet-release.yml
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{5EDB0DD2-A23F-410E-9355-B1521E273FF3}"
@@ -21,6 +19,13 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarkSync.Core", "src\BookmarkSync.Core\BookmarkSync.Core.csproj", "{857B7598-D226-40F7-807E-D11553DC1FED}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BookmarkSync.Infrastructure", "src\BookmarkSync.Infrastructure\BookmarkSync.Infrastructure.csproj", "{C328709A-9063-438D-85B8-909CF14329F0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CI Workflows", "CI Workflows", "{3D32108B-2E08-4B1B-8CB0-2ED08DFE3F48}"
+	ProjectSection(SolutionItems) = preProject
+		.github\workflows\dotnet-release.yml = .github\workflows\dotnet-release.yml
+		.github\workflows\dotnet.yml = .github\workflows\dotnet.yml
+		.github\workflows\codeql.yml = .github\workflows\codeql.yml
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -55,5 +60,6 @@ Global
 		{97E7C240-93D5-4FCA-AEB8-5A2EA6B42062} = {737ABEA3-2510-4E53-9B5A-A258BE2AF721}
 		{857B7598-D226-40F7-807E-D11553DC1FED} = {5EDB0DD2-A23F-410E-9355-B1521E273FF3}
 		{C328709A-9063-438D-85B8-909CF14329F0} = {5EDB0DD2-A23F-410E-9355-B1521E273FF3}
+		{3D32108B-2E08-4B1B-8CB0-2ED08DFE3F48} = {B696875F-E32C-4227-920E-4AFD03B7A5FC}
 	EndGlobalSection
 EndGlobal
