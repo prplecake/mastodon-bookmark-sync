@@ -1,4 +1,5 @@
-﻿using BookmarkSync.Core;
+﻿using System.Diagnostics.CodeAnalysis;
+using BookmarkSync.Core;
 using BookmarkSync.Core.Configuration;
 using BookmarkSync.Infrastructure.Services.Bookmarking;
 using BookmarkSync.Infrastructure.Services.Mastodon;
@@ -9,6 +10,7 @@ using Serilog;
 
 namespace BookmarkSync.CLI;
 
+[ExcludeFromCodeCoverage]
 public static class Program
 {
     private static IConfiguration? _configuration;
