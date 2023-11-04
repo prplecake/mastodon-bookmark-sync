@@ -1,4 +1,5 @@
 using System.Reflection;
+using System.Text;
 #pragma warning disable CS8604
 #pragma warning disable CS8600
 #pragma warning disable CS8602
@@ -103,4 +104,19 @@ public static class EntityTests
         }
         return domainObject;
     }
+}
+public class TestHelpers
+{
+    public static string RandomString(int size)
+    {
+        StringBuilder builder = new StringBuilder();
+        char ch;
+        for (int i = 0; i < size; i++)
+        {
+            ch = Convert.ToChar(Convert.ToInt32(Math.Floor(26 * random.NextDouble() + 65)));
+            builder.Append(ch);
+        }
+        return builder.ToString();
+    }
+    private static readonly Random random = new((int)DateTime.Now.Ticks);
 }
