@@ -1,3 +1,4 @@
+using System.Diagnostics.CodeAnalysis;
 using BookmarkSync.Core.Entities.Config;
 using BookmarkSync.Core.Extensions;
 using BookmarkSync.Infrastructure.Services.Mastodon;
@@ -5,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 
 namespace BookmarkSync.Infrastructure.Services.Bookmarking;
 
+[ExcludeFromCodeCoverage]
 public class BookmarkSyncService : IHostedService
 {
     private static readonly ILogger _logger = Log.ForContext<BookmarkSyncService>();
