@@ -33,7 +33,7 @@ public class LinkAceBookmarkingServiceTests
     }
     private IConfigManager _configManager;
     [TestMethod]
-    public void LinkAce_Save_Success()
+    public async Task LinkAce_Save_Success()
     {
         // Arrange
         var getHttpResponse = new HttpResponseMessage();
@@ -100,14 +100,14 @@ public class LinkAceBookmarkingServiceTests
         };
 
         // Act
-        var result = bookmarkingService.Save(bookmark).Result;
+        var result = await bookmarkingService.Save(bookmark);
 
         // Assert
         Assert.IsNotNull(result);
         Assert.IsTrue(result.IsSuccessStatusCode);
     }
     [TestMethod]
-    public void LinkAce_Save_Success_Link_Exists()
+    public async Task LinkAce_Save_Success_Link_Exists()
     {
         // Arrange
         var getHttpResponse = new HttpResponseMessage();
@@ -231,7 +231,7 @@ public class LinkAceBookmarkingServiceTests
         };
 
         // Act
-        var result = bookmarkingService.Save(bookmark).Result;
+        var result = await bookmarkingService.Save(bookmark);
 
         // Assert
         Assert.IsNotNull(result);
