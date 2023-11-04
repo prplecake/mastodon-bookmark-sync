@@ -31,7 +31,7 @@ public class BriefkastenBookmarkingServiceTests
     }
     private IConfigManager _configManager;
     [TestMethod]
-    public void Briefkasten_Save_Success()
+    public async Task Briefkasten_Save_Success()
     {
         // Arrange
         var httpResponse = new HttpResponseMessage();
@@ -54,7 +54,7 @@ public class BriefkastenBookmarkingServiceTests
         };
 
         // Act
-        var result = bookmarkingService.Save(bookmark).Result;
+        var result = await bookmarkingService.Save(bookmark);
 
         // Assert
         Assert.IsNotNull(result);

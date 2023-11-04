@@ -29,7 +29,7 @@ public class PinboardBookmarkingServiceTests
     private IConfigManager _configManager;
     private readonly string _pinboardUri = "https://api.pinboard.in";
     [TestMethod]
-    public void Pinboard_Save_Success()
+    public async Task Pinboard_Save_Success()
     {
         // Arrange
         var httpResponse = new HttpResponseMessage();
@@ -52,14 +52,14 @@ public class PinboardBookmarkingServiceTests
         };
 
         // Act
-        var result = bookmarkingService.Save(bookmark).Result;
+        var result = await bookmarkingService.Save(bookmark);
 
         // Assert
         Assert.IsNotNull(result);
         Assert.IsTrue(result.IsSuccessStatusCode);
     }
     [TestMethod]
-    public void Pinboard_Save_Success_Long_Title()
+    public async Task Pinboard_Save_Success_Long_Title()
     {
         // Arrange
         var httpResponse = new HttpResponseMessage();
@@ -86,7 +86,7 @@ public class PinboardBookmarkingServiceTests
         };
 
         // Act
-        var result = bookmarkingService.Save(bookmark).Result;
+        var result = await bookmarkingService.Save(bookmark);
 
         // Assert
         Assert.IsNotNull(result);

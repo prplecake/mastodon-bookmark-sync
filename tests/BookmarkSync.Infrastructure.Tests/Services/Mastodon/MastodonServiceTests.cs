@@ -24,7 +24,7 @@ public class MastodonServiceTests
             .WriteTo.TestCorrelator().CreateLogger();
     }
     [TestMethod]
-    public void MastodonService_Delete_Bookmark_Success()
+    public async Task MastodonService_Delete_Bookmark_Success()
     {
         // Arrange
         var httpResponse = new HttpResponseMessage();
@@ -50,10 +50,10 @@ public class MastodonServiceTests
             mastodonService.SetInstance(instance);
 
             // Act
-            mastodonService.DeleteBookmark(new Bookmark
+            await mastodonService.DeleteBookmark(new Bookmark
             {
                 Id = "123456"
-            }).Wait();
+            });
 
             // Assert
             var logs = TestCorrelator.GetLogEventsFromCurrentContext();
@@ -66,7 +66,7 @@ public class MastodonServiceTests
         }
     }
     [TestMethod]
-    public void MastodonService_Failed_To_Delete_Bookmark()
+    public async Task MastodonService_Failed_To_Delete_Bookmark()
     {
         // Arrange
         var httpResponse = new HttpResponseMessage();
@@ -92,10 +92,10 @@ public class MastodonServiceTests
             mastodonService.SetInstance(instance);
 
             // Act
-            mastodonService.DeleteBookmark(new Bookmark
+            await mastodonService.DeleteBookmark(new Bookmark
             {
                 Id = "123456"
-            }).Wait();
+            });
 
             // Assert
             var logs = TestCorrelator.GetLogEventsFromCurrentContext();
@@ -111,7 +111,7 @@ public class MastodonServiceTests
         }
     }
     [TestMethod]
-    public void MastodonService_Failed_To_Delete_Bookmark_403_Forbidden()
+    public async Task MastodonService_Failed_To_Delete_Bookmark_403_Forbidden()
     {
         // Arrange
         var httpResponse = new HttpResponseMessage();
@@ -137,10 +137,10 @@ public class MastodonServiceTests
             mastodonService.SetInstance(instance);
 
             // Act
-            mastodonService.DeleteBookmark(new Bookmark
+            await mastodonService.DeleteBookmark(new Bookmark
             {
                 Id = "123456"
-            }).Wait();
+            });
 
             // Assert
             var logs = TestCorrelator.GetLogEventsFromCurrentContext();
@@ -153,7 +153,7 @@ public class MastodonServiceTests
         }
     }
     [TestMethod]
-    public void MastodonService_GetBookmarks_Success_Empty_List()
+    public async Task MastodonService_GetBookmarks_Success_Empty_List()
     {
         // Arrange
         var expectedBookmarkList = new List<Bookmark>();
@@ -183,7 +183,7 @@ public class MastodonServiceTests
             mastodonService.SetInstance(instance);
 
             // Act
-            var result = mastodonService.GetBookmarks().Result;
+            var result = await mastodonService.GetBookmarks();
 
             // Assert
             var logs = TestCorrelator.GetLogEventsFromCurrentContext();
@@ -197,7 +197,7 @@ public class MastodonServiceTests
         }
     }
     [TestMethod]
-    public void MastodonService_GetBookmarks_Success_Non_Empty_List()
+    public async Task MastodonService_GetBookmarks_Success_Non_Empty_List()
     {
         // Arrange
         var expectedBookmarkList = new List<Bookmark>
@@ -231,7 +231,7 @@ public class MastodonServiceTests
             mastodonService.SetInstance(instance);
 
             // Act
-            var result = mastodonService.GetBookmarks().Result;
+            var result = await mastodonService.GetBookmarks();
 
             // Assert
             var logs = TestCorrelator.GetLogEventsFromCurrentContext();

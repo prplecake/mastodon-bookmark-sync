@@ -31,7 +31,7 @@ public class LinkdingBookmarkingServiceTests
     }
     private IConfigManager _configManager;
     [TestMethod]
-    public void Linkding_Save_Success()
+    public async Task Linkding_Save_Success()
     {
         // Arrange
         var httpResponse = new HttpResponseMessage();
@@ -54,7 +54,7 @@ public class LinkdingBookmarkingServiceTests
         };
 
         // Act
-        var result = bookmarkingService.Save(bookmark).Result;
+        var result = await bookmarkingService.Save(bookmark);
 
         // Assert
         Assert.IsNotNull(result);
