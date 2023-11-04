@@ -31,7 +31,7 @@ public class LinkdingBookmarkingServiceTests
     }
     private IConfigManager _configManager;
     [TestMethod]
-    public void Pinboard_Save_Success()
+    public void Linkding_Save_Success()
     {
         // Arrange
         var httpResponse = new HttpResponseMessage();
