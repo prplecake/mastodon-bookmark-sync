@@ -22,7 +22,7 @@ public class LinkAceBookmarkingServiceTests
                 "App:Bookmarking:ApiToken", "token123456"
             },
             {
-                "App:Bookmarking:LinkAceUri", "https://links.example.com/"
+                "App:Bookmarking:LinkAceUri", "https://links.example.com"
             }
         };
         var configuration = new ConfigurationBuilder()
