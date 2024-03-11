@@ -76,7 +76,7 @@ jobs:
           dotnet publish src/BookmarkSync.CLI/BookmarkSync.CLI.csproj -c Release -r ${{matrix.rid}} --self-contained -p:PublishSingleFile=true -p:PublishReadyToRun=true
           zip -j mastodon-bookmark-sync-${{ github.ref_name }}-${{matrix.rid}}.zip src/BookmarkSync.CLI/bin/Release/net8.0/${{matrix.rid}}/publish/* README.md LICENSE
       - name: Release
-        uses: softprops/action-gh-release@v1
+        uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
         with:
           files: mastodon-bookmark-sync-*.zip
