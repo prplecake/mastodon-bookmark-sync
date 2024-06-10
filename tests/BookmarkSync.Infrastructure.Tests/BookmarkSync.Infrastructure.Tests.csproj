@@ -20,7 +20,7 @@
           <PrivateAssets>all</PrivateAssets>
           <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
         </PackageReference>
-        <PackageReference Include="Serilog.Sinks.TestCorrelator" Version="3.2.0" />
+        <PackageReference Include="Serilog.Sinks.TestCorrelator" Version="4.0.0" />
     </ItemGroup>
 
     <ItemGroup>
