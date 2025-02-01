@@ -19,10 +19,13 @@
       "Service": "LinkAce",
       "ApiToken": "",
       "LinkAceUri": "https://links.example.com"
+      "ApiVersion": "v1"
     }
   },
 ...
 ```
+
+* ApiVersion should be one of: "v1" or "v2".
 
 ## linkding
 ```json
