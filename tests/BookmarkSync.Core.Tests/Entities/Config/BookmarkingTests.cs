@@ -10,9 +10,10 @@ public class BookmarkingTests
         Bookmarking obj = new();
 
         // Assert
-        Assert.AreEqual(2, obj.PropertyCount());
+        Assert.AreEqual(3, obj.PropertyCount());
         Assert.IsTrue(obj.HasProperty("ApiToken"));
         Assert.IsTrue(obj.HasProperty("Service"));
+        Assert.IsTrue(obj.HasProperty("ApiVersion"));
 
         Assert.IsTrue(obj.HasMethod("IsValid"));
     }

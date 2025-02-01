@@ -10,7 +10,7 @@ public class BookmarkSyncService : IHostedService
     private static readonly ILogger _logger = Log.ForContext<BookmarkSyncService>();
     private readonly IBookmarkingService _bookmarkingService;
     private readonly IHostApplicationLifetime _host;
-    private readonly List<string> _ignoredAccounts;
+    private readonly List<string>? _ignoredAccounts;
     private readonly List<Instance>? _instances;
     public BookmarkSyncService(IHostApplicationLifetime host, IConfigManager configManager)
     {
