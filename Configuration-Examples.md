@@ -25,7 +25,7 @@
 ...
 ```
 
-* ApiVersion should be one of: "v1" or "v2".
+* ApiVersion should be one of: "v1" or "v2". v2 is used if this key is not specified. 
 
 ## linkding
 ```json
