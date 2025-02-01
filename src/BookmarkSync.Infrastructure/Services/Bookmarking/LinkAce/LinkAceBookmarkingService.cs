@@ -16,7 +16,8 @@ public class LinkAceBookmarkingService : BookmarkingService, IBookmarkingService
         ApiToken = configManager.App.Bookmarking.ApiToken ?? throw new InvalidOperationException("Missing API token");
         _linkAceUri = configManager.GetConfigValue("App:Bookmarking:LinkAceUri") ??
                       throw new InvalidOperationException("Missing LinkAce Uri");
-        ApiUri = $"{_linkAceUri}/api/v1/links";
+        string version = configManager.App.Bookmarking.ApiVersion ?? "v2";
+        ApiUri = $"{_linkAceUri}/api/{version}/links";
         Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ApiToken);
     }
     /// <inheritdoc/>
