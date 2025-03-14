@@ -30,7 +30,7 @@ jobs:
         run: dotnet build --no-restore
       - name: Test
         run: dotnet test --no-build --verbosity normal --logger "trx" --results-directory "./TestResults" /p:CollectCoverage=true /p:CoverletOutputFormat=opencover /p:Exclude="[BookmarkSync.*.Tests?]*"
-      - uses: dorny/test-reporter@v1
+      - uses: dorny/test-reporter@v2
         if: always()
         with:
           name: .NET Test Results
