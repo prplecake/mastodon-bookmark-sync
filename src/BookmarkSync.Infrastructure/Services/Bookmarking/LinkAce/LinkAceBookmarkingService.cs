@@ -17,7 +17,7 @@ public class LinkAceBookmarkingService : BookmarkingService, IBookmarkingService
         _linkAceUri = configManager.GetConfigValue("App:Bookmarking:LinkAceUri") ??
                       throw new InvalidOperationException("Missing LinkAce Uri");
         string version = configManager.App.Bookmarking.ApiVersion ?? "v2";
-        ApiUri = $"{_linkAceUri}/api/{version}/links";
+        ApiUri = $"{_linkAceUri}/api/{version}";
         Client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", ApiToken);
     }
     /// <inheritdoc/>
@@ -42,15 +42,12 @@ public class LinkAceBookmarkingService : BookmarkingService, IBookmarkingService
                 "check_disabled", true
             }
         };
-        var stringContent = new StringContent(JsonConvert.SerializeObject(payload), Encoding.UTF8,
+        var stringContent = new StringContentWithoutCharset(JsonConvert.SerializeObject(payload),
             MediaTypeNames.Application.Json);
 
         // Check for existing bookmarks with the same URL.
-        var uriBuilder = new UriBuilder($"{_linkAceUri}/api/v1/search/links");
-        var query = HttpUtility.ParseQueryString(string.Empty);
-        query["query"] = bookmark.Uri;
-        uriBuilder.Query = query.ToString();
-        var linksResponse = await Client.GetAsync(uriBuilder.ToString());
+        var uri = $"{ApiUri}/search/links?query={bookmark.Uri}&limit=-1";
+        var linksResponse = await Client.GetAsync(uri);
         linksResponse.EnsureSuccessStatusCode();
         string responseContent = await linksResponse.Content.ReadAsStringAsync();
         var responseObj = JsonConvert.DeserializeObject<LinkAceApiSearchResponse>(responseContent,
@@ -65,13 +62,13 @@ public class LinkAceBookmarkingService : BookmarkingService, IBookmarkingService
         {
             // Bookmark exists in LinkAce, try to update.
             _logger.Information("Bookmark {Uri} exists in LinkAce, updating...", bookmark.Uri);
-            response = await Client.PatchAsync($"{ApiUri}/{existingLink.Id}", stringContent);
+            response = await Client.PatchAsync($"{ApiUri}/links/{existingLink.Id}", stringContent);
             response.EnsureSuccessStatusCode();
             _logger.Debug("Response status: {StatusCode}", response.StatusCode);
             return response;
         }
 
-        response = await Client.PostAsync(ApiUri, stringContent);
+        response = await Client.PostAsync($"{ApiUri}/links", stringContent);
         response.EnsureSuccessStatusCode();
         _logger.Debug("Response status: {StatusCode}", response.StatusCode);
         return response;
