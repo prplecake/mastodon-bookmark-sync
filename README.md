@@ -1,4 +1,4 @@
-[![builds.sr.ht status](https://builds.sr.ht/~prplecake/mastodon-bookmark-sync/commits/build-manifest/dotnet.yml.svg)](https://builds.sr.ht/~prplecake/mastodon-bookmark-sync/commits/build-manifest/dotnet.yml?)
+[![builds.sr.ht status](https://builds.sr.ht/~prplecake/mastodon-bookmark-sync/commits/master.svg)](https://builds.sr.ht/~prplecake/mastodon-bookmark-sync/commits/master?)
 
 # mastodon-bookmark-sync
 
