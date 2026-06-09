@@ -19,7 +19,7 @@ mastodon-bookmark-sync supports multiple Mastodon accounts.
 [linkding]:https://github.com/sissbruecker/linkding
 [Pinboard]:https://pinboard.in/
 
-## Resources
+## resources
 
 This repository recently moved from GitHub to Sourcehut. If you're viewing this
 on GitHub, feel free to head over to our new project home:
@@ -29,7 +29,7 @@ Planning, feature requests, and bugs live at our issue tracker,
 [~prplecake/mastodon-bookmark-sync][tracker]. 
 
 [Send patches](https://git-send-email.io/) to our development list,
-[~prplecake/mastodon-bookmark-sync-devel@lists.sr.ht]. Send questions and other
+[~prplecake/mastodon-bookmark-sync-devel@lists.sr.ht]. Questions and other
 non-development related discussions are had on our discuss list,
 [~prplecake/mastodon-bookmark-sync-discuss@lists.sr.ht]. Feel free to subscribe
 to our low-volume announce list,
