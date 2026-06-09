@@ -1,4 +1,4 @@
 Welcome to the mastodon-bookmark-sync wiki!
 
-* [[Configuration Examples]]
-* [[Questions]]
+* [Configuration Examples](configuration-examples.md)
+* [Questions](questions.md)
