@@ -1,53 +1,45 @@
 ## Briefkasten
-```json
+```yaml
 ...
-  "App": {
-    "Bookmarking": {
-      "Service": "Briefkasten",
-      "ApiToken": "",
-      "BriefkastenUri": "https://briefkastenhq.com"
-    }
-  },
+App:
+  Bookmarking:
+    Service: Briefkasten
+    ApiToken:
+    BriefkastenUri: https://briefkastenhq.com
 ...
 ```
 
 ## LinkAce
-```json
+```yaml
 ...
-  "App": {
-    "Bookmarking": {
-      "Service": "LinkAce",
-      "ApiToken": "",
-      "LinkAceUri": "https://links.example.com"
-      "ApiVersion": "v1"
-    }
-  },
+App:
+  Bookmarking:
+    Service: LinkAce
+    ApiToken: 
+    LinkAceUri: https://links.example.com
+    ApiVersion: v1
 ...
 ```
 
 * ApiVersion should be one of: "v1" or "v2". v2 is used if this key is not specified. 
 
 ## linkding
-```json
+```yaml
 ...
-  "App": {
-    "Bookmarking": {
-      "Service": "linkding",
-      "ApiToken": "",
-      "LinkdingUri": "https://links.example.com"
-    }
-  },
+App:
+  Bookmarking:
+    Service: linkding
+    ApiToken:
+    LinkdingUri: https://links.example.com
 ...
 ```
 
 ## Pinboard
-```json
+```yaml
 ...
-"App": {
-    "Bookmarking": {
-      "Service": "Pinboard",
-      "ApiToken": ""
-    }
-  },
+App:
+  Bookmarking:
+    Service: Pinboard
+    ApiToken:
 ...
 ```
