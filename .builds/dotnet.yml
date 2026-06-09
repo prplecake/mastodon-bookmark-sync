@@ -1,0 +1,18 @@
+image: alpine/latest
+packages:
+- dotnet8-sdk
+sources:
+- https://git.sr.ht/~prplecake/mastodon-bookmark-sync
+triggers:
+- action: email
+  condition: failure
+  to: "<~prplecake/mastodon-bookmark-sync-devel@lists.sr.ht>"
+tasks:
+- restore-dependencies: cd mastodon-bookmark-sync && dotnet restore
+- build: cd mastodon-bookmark-sync && dotnet build --no-restore
+- test: cd mastodon-bookmark-sync && dotnet test --no-build --verbosity normal /p:Exclude="[BookmarkSync.*.Tests?]*"
+- run: cd mastodon-bookmark-sync && dotnet run --project src/BookmarkSync.CLI/BookmarkSync.CLI.csproj -- version
+- publish: |
+    cd mastodon-bookmark-sync
+    echo $SHELL
+    #dotnet publish src/BookmarkSync.CLI/BookmarkSync.CLI.csproj -c Release -r ${{matrix.rid}} --self-contained -p:PublishSingleFile=true -p:PublishReadyToRun=true
