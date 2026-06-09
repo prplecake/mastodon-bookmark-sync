@@ -1,8 +1,8 @@
 using System.Configuration;
 using System.Text;
 using BookmarkSync.Core.Configuration;
+using BookmarkSync.Core.Exceptions;
 using BookmarkSync.Core.Extensions;
-using CiT.Common.Exceptions;
 using Microsoft.Extensions.Configuration;
 
 namespace BookmarkSync.Core.Tests.Configuration;
