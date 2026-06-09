@@ -1,3 +1,5 @@
+using BookmarkSync.Core.Attributes;
+
 namespace BookmarkSync.Core.Entities.Config;
 
 public class App : ConfigurationBase

@@ -1,3 +1,5 @@
+using BookmarkSync.Core.Validations;
+
 namespace BookmarkSync.Core.Entities.Config;
 
 public class ConfigurationBase

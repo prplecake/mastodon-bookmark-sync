@@ -1,5 +1,6 @@
 using System.Configuration;
 using BookmarkSync.Core.Entities.Config;
+using BookmarkSync.Core.Exceptions;
 using BookmarkSync.Core.Extensions;
 using Microsoft.Extensions.Configuration;
 
