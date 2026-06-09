@@ -19,11 +19,34 @@ mastodon-bookmark-sync supports multiple Mastodon accounts.
 [linkding]:https://github.com/sissbruecker/linkding
 [Pinboard]:https://pinboard.in/
 
+## Resources
+
+This repository recently moved from GitHub to Sourcehut. If you're viewing this
+on GitHub, feel free to head over to our new project home:
+[~prplecake/mastodon-bookmark-sync].
+
+Planning, feature requests, and bugs live at our issue tracker,
+[~prplecake/mastodon-bookmark-sync][tracker]. 
+
+[Send patches](https://git-send-email.io/) to our development list,
+[~prplecake/mastodon-bookmark-sync-devel@lists.sr.ht]. Send questions and other
+non-development related discussions are had on our discuss list,
+[~prplecake/mastodon-bookmark-sync-discuss@lists.sr.ht]. Feel free to subscribe
+to our low-volume announce list,
+[~prplecake/mastodon-bookmark-sync-announce@lists.sr.ht], for release
+announcements. 
+
+[~prplecake/mastodon-bookmark-sync]:https://sr.ht/~prplecake/mastodon-bookmark-sync
+[tracker]:https://todo.sr.ht/~prplecake/mastodon-bookmark-sync
+[~prplecake/mastodon-bookmark-sync-devel@lists.sr.ht]:https://lists.sr.ht/~prplecake/mastodon-bookmark-sync-devel
+[~prplecake/mastodon-bookmark-sync-discuss@lists.sr.ht]:https://lists.sr.ht/~prplecake/mastodon-bookmark-sync-discuss
+[~prplecake/mastodon-bookmark-sync-announce@lists.sr.ht]:https://lists.sr.ht/~prplecake/mastodon-bookmark-sync-announce
+
 ## getting started
 
 You probably just want to grab an executable from the [Releases][releases] page.
 
-[releases]:https://github.com/prplecake/mastodon-bookmark-sync/releases
+[releases]:https://git.sr.ht/~prplecake/mastodon-bookmark-sync/refs
 
 Before you can start using mastodon-bookmark-sync, you'll need to configure
 it. An example configuration can be found [here][config-blob]. You can also
@@ -41,7 +64,7 @@ And you'll need an API token for your bookmarking service of choice.
 
 See the wiki for [configuration examples][config-examples].
 
-[config-examples]:https://github.com/prplecake/mastodon-bookmark-sync/wiki/Configuration-Examples
+[config-examples]:https://man.sr.ht/~prplecake/mastodon-bookmark-sync/configuration-examples.md
 
 Once you've got it configured, just run it. You might want to add it to your
 crontab, or your other favorite task scheduler:
@@ -50,8 +73,8 @@ crontab, or your other favorite task scheduler:
 0 */6 * * * cd /path/to/mastodon-bookmark-sync; ./mastodon-bookmark-sync
 ```
 
-[config-blob]:https://github.com/prplecake/mastodon-bookmark-sync/blob/master/BookmarkSync.CLI/appsettings.Example.json
+[config-blob]:https://git.sr.ht/~prplecake/mastodon-bookmark-sync/tree/master/item/src/BookmarkSync.CLI/config.Example.yaml
 
 ## questions
 
-* [Help! I can't run this on my Mac.](https://github.com/prplecake/mastodon-bookmark-sync/wiki/Questions#help-i-cant-run-this-on-my-mac)
+* [Help! I can't run this on my Mac.](https://man.sr.ht/~prplecake/mastodon-bookmark-sync/questions.md#help-i-cant-run-this-on-my-mac)
