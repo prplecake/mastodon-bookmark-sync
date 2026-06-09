@@ -1,12 +1,18 @@
 image: alpine/latest
 packages:
 - dotnet8-sdk
+- zip
 sources:
 - https://git.sr.ht/~prplecake/mastodon-bookmark-sync
 triggers:
 - action: email
   condition: failure
   to: "<~prplecake/mastodon-bookmark-sync-devel@lists.sr.ht>"
+artifacts:
+- mastodon-bookmark-sync-win-x64.zip
+- mastodon-bookmark-sync-linux-x64.zip
+- mastodon-bookmark-sync-linux-arm64.zip
+- mastodon-bookmark-sync-osx-x64.zip
 tasks:
 - restore-dependencies: cd mastodon-bookmark-sync && dotnet restore
 - build: cd mastodon-bookmark-sync && dotnet build --no-restore
@@ -14,5 +20,7 @@ tasks:
 - run: cd mastodon-bookmark-sync && dotnet run --project src/BookmarkSync.CLI/BookmarkSync.CLI.csproj -- version
 - publish: |
     cd mastodon-bookmark-sync
-    echo $SHELL
-    #dotnet publish src/BookmarkSync.CLI/BookmarkSync.CLI.csproj -c Release -r ${{matrix.rid}} --self-contained -p:PublishSingleFile=true -p:PublishReadyToRun=true
+    for rid in win-x64 linux-x64 linux-arm64 osx-x64; do
+      dotnet publish src/BookmarkSync.CLI/BookmarkSync.CLI.csproj -c Release -r $rid --self-contained -p:PublishSingleFile=true -p:PublishReadyToRun=true
+      zip -j "$HOME/mastodon-bookmark-sync-$rid.zip" src/BookmarkSync.CLI/bin/Release/net8.0/$rid/publish/* README.md LICENSE
+    done
