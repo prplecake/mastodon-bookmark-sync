@@ -36,6 +36,9 @@
       <None Update="config.yaml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
+      <None Update="config.Example.yaml">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
       <None Update="config.Development.yaml">
         <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       </None>
